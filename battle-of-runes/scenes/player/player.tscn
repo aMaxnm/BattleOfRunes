@@ -64,6 +64,17 @@ size = Vector2(11, 18)
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_dovo2")
 
+[node name="ArmPivot" type="Node2D" parent="."]
+
+[node name="Arm" type="Sprite2D" parent="ArmPivot"]
+position = Vector2(6, 0)
+texture = ExtResource("1_8afob")
+hframes = 6
+vframes = 5
+frame = 27
+
+[node name="Marker2D" type="Marker2D" parent="ArmPivot"]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_8afob")
 hframes = 6
@@ -74,16 +85,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_gmlin")
 }
 autoplay = "idle"
-
-[node name="ArmPivot" type="Node2D" parent="."]
-
-[node name="Arm" type="Sprite2D" parent="ArmPivot"]
-texture = ExtResource("1_8afob")
-hframes = 6
-vframes = 5
-frame = 27
-
-[node name="Marker2D" type="Marker2D" parent="ArmPivot"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 0)

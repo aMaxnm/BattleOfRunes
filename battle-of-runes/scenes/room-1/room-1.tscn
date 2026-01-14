@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://b16bqgdrl0pau"]
+[gd_scene load_steps=25 format=4 uid="uid://b16bqgdrl0pau"]
 
 [ext_resource type="Texture2D" uid="uid://dw5f141l4a0n0" path="res://assets/assets-niveles/DampDungeons/Tiles/Dungeon_Autotiles.png" id="1_svyhc"]
 [ext_resource type="Texture2D" uid="uid://u5g78o1s0g8l" path="res://assets/assets-niveles/DampDungeons/Tiles/Dungeon_WallsAndFloors.png" id="2_2onwg"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ie2d5o1x7opv" path="res://assets/assets-niveles/DampDungeons/Tiles/DungeonDecorations.png" id="5_2esut"]
 [ext_resource type="Texture2D" uid="uid://esw052a2x8e6" path="res://assets/assets-niveles/DampDungeons/Animations/Dungeon_ObjectBigdoor.png" id="6_ob0va"]
 [ext_resource type="PackedScene" uid="uid://ckxtsg8o8b8bo" path="res://scenes/player/player.tscn" id="7_a6mf8"]
+[ext_resource type="PackedScene" uid="uid://dvq3anynaj73c" path="res://scenes/utility/camera/player_camera.tscn" id="8_e8tnf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tiip4"]
 texture = ExtResource("1_svyhc")
@@ -1425,5 +1426,9 @@ visible = false
 position = Vector2(-16, -1)
 shape = SubResource("RectangleShape2D_ki4n7")
 
-[node name="Player" parent="StaticBody2D" instance=ExtResource("7_a6mf8")]
-position = Vector2(-217, 107)
+[node name="Player" parent="." instance=ExtResource("7_a6mf8")]
+position = Vector2(351, 188)
+
+[node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_e8tnf")]
+zoom = Vector2(3, 3)
+player = NodePath("../Player")

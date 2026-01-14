@@ -6,6 +6,7 @@ class_name Player
 @onready var marker = $ArmPivot/Marker2D
 @export var move_speed = 100.0
 @onready var shoot_timer: Timer = $Timer
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 var arm_position
 var facing_right := true
@@ -25,6 +26,10 @@ func _physics_process(delta: float) -> void:
 func handle_movement():
 	var move_input: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = move_speed * move_input
+	if not(velocity.x == 0) or not(velocity.y == 0):
+		anim_player.play("run")
+	else:
+		anim_player.play("idle")
 	move_and_slide()
 
 func update_facing_by_mouse() -> void:
