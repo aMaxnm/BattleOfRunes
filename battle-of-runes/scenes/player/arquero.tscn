@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6rpv14ppfpbh"]
+
+[ext_resource type="Script" uid="uid://bvb8o1lx1ksg1" path="res://scenes/player/player.gd" id="1_svpbo"]
+[ext_resource type="Texture2D" uid="uid://cvg1fdo3enmu" path="res://assets/sprites/player/arquero-spritesheet.png" id="2_rfdb2"]
+
+[sub_resource type="Animation" id="Animation_rfdb2"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_g5oci"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_mt1ge"]
+resource_name = "run"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ucqd5"]
+_data = {
+&"RESET": SubResource("Animation_g5oci"),
+&"idle": SubResource("Animation_rfdb2"),
+&"run": SubResource("Animation_mt1ge")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rfdb2"]
+size = Vector2(10, 16)
+
+[node name="Arquero" type="CharacterBody2D"]
+script = ExtResource("1_svpbo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rfdb2")
+hframes = 6
+vframes = 5
+
+[node name="ArmPivot" type="Node2D" parent="."]
+
+[node name="Arm" type="Sprite2D" parent="ArmPivot"]
+position = Vector2(2, 0)
+texture = ExtResource("2_rfdb2")
+hframes = 6
+vframes = 5
+frame = 27
+
+[node name="Marker2D" type="Marker2D" parent="ArmPivot"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ucqd5")
+}
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_rfdb2")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
