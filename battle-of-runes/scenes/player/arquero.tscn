@@ -3,6 +3,21 @@
 [ext_resource type="Script" uid="uid://bvb8o1lx1ksg1" path="res://scenes/player/player.gd" id="1_svpbo"]
 [ext_resource type="Texture2D" uid="uid://cvg1fdo3enmu" path="res://assets/sprites/player/arquero-spritesheet.png" id="2_rfdb2"]
 
+[sub_resource type="Animation" id="Animation_g5oci"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_rfdb2"]
 resource_name = "idle"
 loop_mode = 1
@@ -17,21 +32,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
-}
-
-[sub_resource type="Animation" id="Animation_g5oci"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_mt1ge"]
@@ -62,6 +62,7 @@ _data = {
 size = Vector2(10, 16)
 
 [node name="Arquero" type="CharacterBody2D"]
+collision_mask = 12
 script = ExtResource("1_svpbo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
