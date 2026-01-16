@@ -1,5 +1,6 @@
 extends CharacterBody2D
 class_name Player
+@export var hp: int = 5
 @export var character_type: PlayerFireRouter.CharacterType
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var arm_pivot = $ArmPivot
@@ -52,3 +53,14 @@ func aim_arms() -> void:
 
 func _on_timer_timeout() -> void:
 	can_shoot = true
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	take_damage(1)
+	
+
+func take_damage(damage: int):
+	hp-damage
+	if hp < 0:
+		queue_free()
+	

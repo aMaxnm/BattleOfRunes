@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6rpv14ppfpbh"]
+[gd_scene load_steps=9 format=3 uid="uid://c6rpv14ppfpbh"]
 
 [ext_resource type="Script" uid="uid://bvb8o1lx1ksg1" path="res://scenes/player/player.gd" id="1_svpbo"]
 [ext_resource type="Texture2D" uid="uid://cvg1fdo3enmu" path="res://assets/sprites/player/arquero-spritesheet.png" id="2_rfdb2"]
@@ -61,6 +61,8 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfdb2"]
 size = Vector2(10, 16)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rfdb2"]
+
 [node name="Arquero" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 6
 script = ExtResource("1_svpbo")
@@ -95,4 +97,11 @@ shape = SubResource("RectangleShape2D_rfdb2")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 34
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_rfdb2")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
