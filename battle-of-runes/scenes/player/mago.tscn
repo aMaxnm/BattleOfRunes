@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ckxtsg8o8b8bo"]
 
-[ext_resource type="Texture2D" uid="uid://d2yyec02i1gwk" path="res://assets/sprites/player/mago-spritesheet.png" id="1_8afob"]
+[ext_resource type="Texture2D" uid="uid://cna4bgs16g6o5" path="res://assets/sprites/player/mago-spritesheet.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bvb8o1lx1ksg1" path="res://scenes/player/player.gd" id="1_dovo2"]
 
 [sub_resource type="Animation" id="Animation_gmlin"]
@@ -64,8 +64,8 @@ size = Vector2(11, 18)
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 12
 script = ExtResource("1_dovo2")
-character_type = null
-move_speed = null
+character_type = 2
+move_speed = 75.0
 
 [node name="ArmPivot" type="Node2D" parent="."]
 
