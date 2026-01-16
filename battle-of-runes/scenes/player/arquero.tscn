@@ -61,7 +61,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rfdb2"]
 size = Vector2(10, 16)
 
-[node name="Arquero" type="CharacterBody2D"]
+[node name="Arquero" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 4
 script = ExtResource("1_svpbo")
 

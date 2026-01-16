@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b73fdhgkatq1w"]
+[gd_scene load_steps=39 format=3 uid="uid://b73fdhgkatq1w"]
 
 [ext_resource type="Script" uid="uid://codhlatw3gbgb" path="res://scenes/enemies/orc/orc.gd" id="1_genkw"]
 [ext_resource type="Texture2D" uid="uid://qld1odelc776" path="res://assets/sprites/enemies/Orc/Orc-Death.png" id="1_olqtf"]
@@ -232,11 +232,15 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_it4yf"]
-radius = 9.0
+radius = 7.6923084
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rm2ht"]
-radius = 11.0
-height = 24.0
+radius = 4.615385
+height = 13.846155
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_genkw"]
+radius = 8.461539
+height = 23.076925
 
 [node name="Orc" type="CharacterBody2D"]
 scale = Vector2(1.3, 1.3)
@@ -260,5 +264,12 @@ debug_color = Color(0.9967733, 0, 0.18914783, 0.41960785)
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="AttackHitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_genkw")
+debug_color = Color(0.6505729, 0.519971, 0, 0.41960785)
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

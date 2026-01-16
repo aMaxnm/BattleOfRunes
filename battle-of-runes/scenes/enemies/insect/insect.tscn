@@ -1,0 +1,162 @@
+[gd_scene load_steps=30 format=3 uid="uid://cs55starsgygt"]
+
+[ext_resource type="Texture2D" uid="uid://coofy6o7mdokc" path="res://assets/sprites/enemies/Insect/idle01.png" id="1_ejksa"]
+[ext_resource type="Script" uid="uid://cmyptvw4kqq44" path="res://scenes/enemies/insect/insect.gd" id="1_j848l"]
+[ext_resource type="Texture2D" uid="uid://clv0moa7yq2o" path="res://assets/sprites/enemies/Insect/attack01.png" id="1_jkpms"]
+[ext_resource type="Texture2D" uid="uid://brgepsaspucjw" path="res://assets/sprites/enemies/Insect/idle02.png" id="2_2ieig"]
+[ext_resource type="Texture2D" uid="uid://wd3mkf3y6ysu" path="res://assets/sprites/enemies/Insect/attack02.png" id="2_j848l"]
+[ext_resource type="Texture2D" uid="uid://ugh7yk3ks0oc" path="res://assets/sprites/enemies/Insect/idle03.png" id="3_o055b"]
+[ext_resource type="Texture2D" uid="uid://mix27y788rgy" path="res://assets/sprites/enemies/Insect/attack03.png" id="3_xr0le"]
+[ext_resource type="Texture2D" uid="uid://dcij1ccweq4x5" path="res://assets/sprites/enemies/Insect/attack04.png" id="4_er3tu"]
+[ext_resource type="Texture2D" uid="uid://c6xr8pb7nxoii" path="res://assets/sprites/enemies/Insect/idle04.png" id="4_ylr35"]
+[ext_resource type="Texture2D" uid="uid://dapmx2i2jsmgj" path="res://assets/sprites/enemies/Insect/idle05.png" id="5_4akwt"]
+[ext_resource type="Texture2D" uid="uid://cn1xj71q2afpd" path="res://assets/sprites/enemies/Insect/attack05.png" id="5_tu11u"]
+[ext_resource type="Texture2D" uid="uid://0sjrny3nm74q" path="res://assets/sprites/enemies/Insect/idle06.png" id="6_cc0sg"]
+[ext_resource type="Texture2D" uid="uid://dtfvrjdl30q6w" path="res://assets/sprites/enemies/Insect/attack06.png" id="6_n35dy"]
+[ext_resource type="Texture2D" uid="uid://bjjw0o3ffmbpk" path="res://assets/sprites/enemies/Insect/hit01.png" id="7_3bbwu"]
+[ext_resource type="Texture2D" uid="uid://b7dgbqf5rbt3w" path="res://assets/sprites/enemies/Insect/idle07.png" id="7_pq26f"]
+[ext_resource type="Texture2D" uid="uid://bv6x3u6p8qbes" path="res://assets/sprites/enemies/Insect/idle08.png" id="8_37ak8"]
+[ext_resource type="Texture2D" uid="uid://bsgxjg1mmjp6w" path="res://assets/sprites/enemies/Insect/hit02.png" id="8_lx7mj"]
+[ext_resource type="Texture2D" uid="uid://ce4g36yo7d314" path="res://assets/sprites/enemies/Insect/idle09.png" id="9_pekyi"]
+[ext_resource type="Texture2D" uid="uid://dh252l3x7drr0" path="res://assets/sprites/enemies/Insect/hit03.png" id="9_tgihf"]
+[ext_resource type="Texture2D" uid="uid://rrg4tkbem743" path="res://assets/sprites/enemies/Insect/walk01.png" id="10_jkpms"]
+[ext_resource type="Texture2D" uid="uid://dp8yn2aata522" path="res://assets/sprites/enemies/Insect/walk02.png" id="11_j848l"]
+[ext_resource type="Texture2D" uid="uid://b7yylgxivxixx" path="res://assets/sprites/enemies/Insect/walk03.png" id="12_xr0le"]
+[ext_resource type="Texture2D" uid="uid://brevbg74dwymk" path="res://assets/sprites/enemies/Insect/walk04.png" id="13_er3tu"]
+[ext_resource type="Texture2D" uid="uid://d3rejfxq4hqhi" path="res://assets/sprites/enemies/Insect/walk05.png" id="14_tu11u"]
+[ext_resource type="Texture2D" uid="uid://c6w70fmfn31lq" path="res://assets/sprites/enemies/Insect/walk06.png" id="15_n35dy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3bbwu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jkpms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_j848l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xr0le")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_er3tu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tu11u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n35dy")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_3bbwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lx7mj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tgihf")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ejksa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2ieig")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o055b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ylr35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4akwt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cc0sg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pq26f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_37ak8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pekyi")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_jkpms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_j848l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_xr0le")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_er3tu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_tu11u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_n35dy")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jkpms"]
+radius = 4.0
+height = 54.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xr0le"]
+radius = 6.0
+height = 56.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_er3tu"]
+radius = 25.0
+height = 62.0
+
+[node name="Insect" type="CharacterBody2D"]
+script = ExtResource("1_j848l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3bbwu")
+animation = &"attack"
+autoplay = "idle"
+frame = 5
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9, 5)
+shape = SubResource("CapsuleShape2D_jkpms")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-9, 5)
+shape = SubResource("CapsuleShape2D_xr0le")
+debug_color = Color(0.9973183, 0, 0.17831245, 0.41960785)
+
+[node name="AttackHitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox"]
+position = Vector2(-10, 5)
+shape = SubResource("CapsuleShape2D_er3tu")
+debug_color = Color(0.8321298, 0.39200842, 0, 0.41960785)
