@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cvm5nk61f3jeo"]
 
 [ext_resource type="Script" uid="uid://bvb8o1lx1ksg1" path="res://scenes/player/player.gd" id="1_jev62"]
-[ext_resource type="Texture2D" uid="uid://w2fnqe7kakku" path="res://assets/sprites/player/caballero-spritesheet.png" id="1_kv3vx"]
+[ext_resource type="Texture2D" uid="uid://63nawivq8jjn" path="res://assets/sprites/player/caballero-spritesheet.png" id="1_kv3vx"]
 
 [sub_resource type="Animation" id="Animation_ljspv"]
 length = 0.001
@@ -62,6 +62,7 @@ _data = {
 size = Vector2(12, 16)
 
 [node name="Paladin" type="CharacterBody2D"]
+collision_mask = 4
 script = ExtResource("1_jev62")
 character_type = 1
 
