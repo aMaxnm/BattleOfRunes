@@ -1,0 +1,136 @@
+[gd_scene load_steps=17 format=3 uid="uid://bkjohduh8pm4"]
+
+[ext_resource type="Script" uid="uid://dhtcqb7clyb6k" path="res://scenes/enemies/skeleton/skeleton.gd" id="1_me6e6"]
+[ext_resource type="Texture2D" uid="uid://btwkf8knn7t7p" path="res://assets/sprites/enemies/skeleton/Skeleton.png" id="2_i3wcf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdxqp"]
+atlas = ExtResource("2_i3wcf")
+region = Rect2(220, 52, 44, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ep5l1"]
+atlas = ExtResource("2_i3wcf")
+region = Rect2(176, 52, 44, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3pxm"]
+atlas = ExtResource("2_i3wcf")
+region = Rect2(132, 52, 44, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3bvy"]
+atlas = ExtResource("2_i3wcf")
+region = Rect2(88, 52, 44, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46u6v"]
+atlas = ExtResource("2_i3wcf")
+region = Rect2(44, 52, 44, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2r6g"]
+atlas = ExtResource("2_i3wcf")
+region = Rect2(0, 52, 44, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_me6e6"]
+atlas = ExtResource("2_i3wcf")
+region = Rect2(0, 0, 44, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3wcf"]
+atlas = ExtResource("2_i3wcf")
+region = Rect2(44, 0, 44, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4umm2"]
+atlas = ExtResource("2_i3wcf")
+region = Rect2(88, 0, 44, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7yrl"]
+atlas = ExtResource("2_i3wcf")
+region = Rect2(132, 0, 44, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b36fj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdxqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ep5l1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3pxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3bvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46u6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2r6g")
+}],
+"loop": false,
+"name": &"death",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_me6e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3wcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4umm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7yrl")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.5
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yjy0a"]
+radius = 5.0
+height = 32.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_adimu"]
+radius = 8.0
+height = 32.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pewhb"]
+radius = 11.0
+height = 36.0
+
+[node name="Skeleton" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_me6e6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.4305115e-06, 2)
+scale = Vector2(0.65909094, 0.75)
+sprite_frames = SubResource("SpriteFrames_b36fj")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.02852955
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 6)
+shape = SubResource("CapsuleShape2D_yjy0a")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_adimu")
+debug_color = Color(0.98942345, 0, 0.29605553, 0.41960785)
+
+[node name="AttackHitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox"]
+position = Vector2(1, 6)
+shape = SubResource("CapsuleShape2D_pewhb")
+debug_color = Color(0.7232182, 0.47823155, 0, 0.41960785)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="sprite_frames_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_sprite_frames_changed"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="body_entered" from="AttackHitBox" to="." method="_on_attack_hit_box_body_entered"]

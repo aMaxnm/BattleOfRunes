@@ -4,12 +4,13 @@ class_name Orc
 enum State { WALK, ATTACK, HURT, DEATH }
 var current_state = State.WALK
 
-var max_health: int = 5
+var max_health: int = 6
 var health: int = max_health
 var move_speed: float = 60.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $HitBox
+@onready var attackbox: Area2D = $AttackHitBox
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var attack_timer: Timer = $AttackTimer
 
@@ -17,11 +18,15 @@ var player: Node2D = null
 
 func _ready():
 	hitbox.connect("body_entered", self._on_HitBox_body_entered)
+	attackbox.connect("body_entered", self._on_AttackBox_body_entered)
 	player = get_tree().get_first_node_in_group("Player")
 	attack_timer.wait_time = 1.0
 	attack_timer.one_shot = true
-
+	call_deferred("_find_player")
 	sprite.connect("frame_changed", Callable(self, "_on_sprite_frame_changed"))
+
+func _find_player():
+	player = get_tree().get_first_node_in_group("Player")
 
 func _physics_process(delta):
 	match current_state:
@@ -59,9 +64,16 @@ func follow_player():
 	else:
 		velocity = Vector2.ZERO
 
+# Orc recibe daño (balas del Player)
 func _on_HitBox_body_entered(body: Node) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("PlayerBullet"):
 		take_damage(1)
+		body.queue_free() # opcional: destruir la bala al impactar
+
+# Orc inflige daño al Player
+func _on_AttackBox_body_entered(body: Node) -> void:
+	if body.is_in_group("Player"):
+		die()
 
 func take_damage(amount: int):
 	if current_state == State.DEATH:
@@ -76,12 +88,16 @@ func take_damage(amount: int):
 func die():
 	current_state = State.DEATH
 	velocity = Vector2.ZERO
-	print("Orc ha muerto")
 
 	collision.call_deferred("set_disabled", true)
-	hitbox.call_deferred("queue_free")
+	hitbox.call_deferred("set_monitoring", false)
+	attackbox.call_deferred("set_monitoring", false)
 
 	sprite.play("death")
+
+	# Avisar a la room UNA SOLA VEZ
+	get_tree().call_group("room", "enemy_died")
+	print("🧠 Orc murió, avisando a la sala")
 
 func _on_sprite_frame_changed():
 	if current_state == State.DEATH and sprite.animation == "death":

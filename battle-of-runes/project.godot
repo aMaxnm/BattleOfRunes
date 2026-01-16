@@ -24,6 +24,12 @@ ArrowUpgradeManager="*res://singletons/arrow_upgrade_manager.gd"
 SpellUpgradeManager="*res://singletons/spell_upgrade_manager.gd"
 SwordUpgradeManager="*res://singletons/sword_upgrade_manager.gd"
 
+[global_group]
+
+enemies=""
+Player=""
+room=""
+
 [input]
 
 move_left={

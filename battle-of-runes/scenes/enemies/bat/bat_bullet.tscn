@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://p501itd0m8in"]
+
+[ext_resource type="Script" uid="uid://scimnogabiwb" path="res://scenes/enemies/bat/bat_bullet.gd" id="1_iycm4"]
+[ext_resource type="Texture2D" uid="uid://b4kudwq7kqy48" path="res://assets/sprites/enemies/bat/bullet.png" id="2_iycm4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c82mk"]
+radius = 9.055386
+
+[node name="BatBullet" type="Area2D"]
+script = ExtResource("1_iycm4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 3)
+shape = SubResource("CircleShape2D_c82mk")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-6, 2)
+scale = Vector2(0.22130018, 0.2317961)
+texture = ExtResource("2_iycm4")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
