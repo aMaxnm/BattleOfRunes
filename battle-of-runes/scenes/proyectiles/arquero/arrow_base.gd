@@ -11,3 +11,6 @@ func _physics_process(delta):
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	queue_free()
+
+func _process(delta: float) -> void:
+	print("alive")

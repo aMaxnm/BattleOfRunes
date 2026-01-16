@@ -121,7 +121,6 @@ func _on_sprite_frame_changed() -> void:
 		if sprite.frame == total_frames - 1:
 			queue_free()
 
-
-func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		die()
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("PlayerBullet"):
+		take_damage(1)

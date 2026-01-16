@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name SpellBase
 
-@export var speed := 300.0
+@export var speed := 500.0
 
 func _ready():
 	velocity = Vector2.RIGHT.rotated(rotation) * speed

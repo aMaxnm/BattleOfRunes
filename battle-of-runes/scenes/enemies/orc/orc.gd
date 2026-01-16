@@ -17,7 +17,7 @@ var move_speed: float = 60.0
 var player: Node2D = null
 
 func _ready():
-	hitbox.connect("body_entered", self._on_HitBox_body_entered)
+	#hitbox.connect("body_entered", self._on_HitBox_body_entered)
 	attackbox.connect("body_entered", self._on_AttackBox_body_entered)
 	player = get_tree().get_first_node_in_group("Player")
 	attack_timer.wait_time = 1.0
@@ -65,11 +65,11 @@ func follow_player():
 		velocity = Vector2.ZERO
 
 # Orc recibe daño (balas del Player)
-func _on_HitBox_body_entered(body: Node) -> void:
-	if body.is_in_group("PlayerBullet"):
-		take_damage(1)
-		body.queue_free() # opcional: destruir la bala al impactar
 
+func _on_hit_box_area_entered(area: Area2D) -> void:
+	if area.is_in_group("PlayerBullet"):
+		take_damage(1)
+		
 # Orc inflige daño al Player
 func _on_AttackBox_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
