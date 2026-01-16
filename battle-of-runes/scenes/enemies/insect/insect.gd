@@ -1,12 +1,12 @@
 extends CharacterBody2D
-class_name Orc
+class_name Insect
 
-enum State { WALK, ATTACK, HURT, DEATH }
-var current_state = State.WALK
+enum State { IDLE, WALK, ATTACK, HURT, DEATH }
+var current_state = State.IDLE
 
-var max_health: int = 6
+var max_health: int = 8
 var health: int = max_health
-var move_speed: float = 60.0
+var move_speed: float = 70.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $HitBox
@@ -27,6 +27,10 @@ func _ready():
 
 func _physics_process(delta):
 	match current_state:
+		State.IDLE:
+			sprite.play("idle")
+			follow_player()
+
 		State.WALK:
 			sprite.play("walk")
 			follow_player()
@@ -36,18 +40,18 @@ func _physics_process(delta):
 
 		State.ATTACK:
 			sprite.play("attack")
-			follow_player()
+			velocity = Vector2.ZERO
 			if attack_timer.is_stopped():
 				current_state = State.WALK
 
 		State.HURT:
-			sprite.play("hurt")
-			follow_player()
+			sprite.play("hit")
+			velocity = Vector2.ZERO
 			if health > 0:
 				current_state = State.WALK
 
 		State.DEATH:
-			sprite.play("death")
+			sprite.play("hit")  # usa "hit" como animación de muerte si no hay "death"
 			velocity = Vector2.ZERO
 
 func follow_player():
@@ -58,26 +62,27 @@ func follow_player():
 		velocity = dir * move_speed
 		move_and_slide()
 		sprite.flip_h = player.position.x < position.x
+		if current_state == State.IDLE:
+			current_state = State.WALK
 	else:
 		velocity = Vector2.ZERO
 
-# Orc recibe daño (balas del Player)
+# Recibe daño (balas del jugador)
 func _on_HitBox_body_entered(body: Node) -> void:
 	if body.is_in_group("PlayerBullet"):
 		take_damage(1)
-		body.queue_free() # opcional: destruir la bala al impactar
+		body.queue_free()
 
-# Orc inflige daño al Player
+# Inflige daño al jugador
 func _on_AttackBox_body_entered(body: Node) -> void:
-	if body.is_in_group("Player"):
-		if body.has_method("take_damage"):
-			body.take_damage(1)
+	if body.is_in_group("Player") and body.has_method("take_damage"):
+		body.take_damage(1)
 
 func take_damage(amount: int):
 	if current_state == State.DEATH:
 		return
 	health -= amount
-	print("Orc recibió daño, salud actual:", health)
+	print("Insect recibió daño, salud actual:", health)
 	if health > 0:
 		current_state = State.HURT
 	else:
@@ -86,16 +91,16 @@ func take_damage(amount: int):
 func die():
 	current_state = State.DEATH
 	velocity = Vector2.ZERO
-	print("Orc ha muerto")
+	print("Insect ha muerto")
 
 	collision.call_deferred("set_disabled", true)
 	hitbox.call_deferred("queue_free")
 	attackbox.call_deferred("queue_free")
 
-	sprite.play("death")
+	sprite.play("hit")  # usa "hit" como animación de muerte
 
 func _on_sprite_frame_changed():
-	if current_state == State.DEATH and sprite.animation == "death":
-		var total_frames = sprite.sprite_frames.get_frame_count("death")
+	if current_state == State.DEATH and sprite.animation == "hit":
+		var total_frames = sprite.sprite_frames.get_frame_count("hit")
 		if sprite.frame == total_frames - 1:
 			queue_free()

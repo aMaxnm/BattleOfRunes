@@ -1,12 +1,12 @@
 extends CharacterBody2D
-class_name Orc
+class_name Skeleton
 
-enum State { WALK, ATTACK, HURT, DEATH }
+enum State { WALK, ATTACK, DEATH }
 var current_state = State.WALK
 
-var max_health: int = 6
+var max_health: int = 3
 var health: int = max_health
-var move_speed: float = 60.0
+var move_speed: float = 50.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox: Area2D = $HitBox
@@ -35,15 +35,9 @@ func _physics_process(delta):
 				attack_timer.start()
 
 		State.ATTACK:
-			sprite.play("attack")
+			sprite.play("walk")  # usa la misma animación
 			follow_player()
 			if attack_timer.is_stopped():
-				current_state = State.WALK
-
-		State.HURT:
-			sprite.play("hurt")
-			follow_player()
-			if health > 0:
 				current_state = State.WALK
 
 		State.DEATH:
@@ -61,32 +55,29 @@ func follow_player():
 	else:
 		velocity = Vector2.ZERO
 
-# Orc recibe daño (balas del Player)
+# Recibe daño (balas del jugador)
 func _on_HitBox_body_entered(body: Node) -> void:
 	if body.is_in_group("PlayerBullet"):
 		take_damage(1)
-		body.queue_free() # opcional: destruir la bala al impactar
+		body.queue_free()
 
-# Orc inflige daño al Player
+# Inflige daño al jugador
 func _on_AttackBox_body_entered(body: Node) -> void:
-	if body.is_in_group("Player"):
-		if body.has_method("take_damage"):
-			body.take_damage(1)
+	if body.is_in_group("Player") and body.has_method("take_damage"):
+		body.take_damage(1)
 
 func take_damage(amount: int):
 	if current_state == State.DEATH:
 		return
 	health -= amount
-	print("Orc recibió daño, salud actual:", health)
-	if health > 0:
-		current_state = State.HURT
-	else:
+	print("Skeleton recibió daño, salud actual:", health)
+	if health <= 0:
 		die()
 
 func die():
 	current_state = State.DEATH
 	velocity = Vector2.ZERO
-	print("Orc ha muerto")
+	print("Skeleton ha muerto")
 
 	collision.call_deferred("set_disabled", true)
 	hitbox.call_deferred("queue_free")

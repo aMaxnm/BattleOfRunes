@@ -61,7 +61,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8afob"]
 size = Vector2(11, 18)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 12
 script = ExtResource("1_dovo2")
 
