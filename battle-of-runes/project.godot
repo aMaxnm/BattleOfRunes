@@ -11,12 +11,13 @@ config_version=5
 [application]
 
 config/name="BattleOfRunes"
-run/main_scene="uid://dbwqlrj1mjmnq"
+run/main_scene="uid://brt1s657bmojj"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
+pause_menu_scene="*res://scenes/pauseMenu/pauseMenu.tscn"
 BulletManager="*res://singletons/bullet_manager.gd"
 game_manager="*res://singletons/game_manager.gd"
 PlayerFireRouter="*res://singletons/player_fire_router.gd"
