@@ -1483,7 +1483,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_r01x8")
 }],
 "loop": false,
-"name": &"default",
+"name": &"open",
 "speed": 5.0
 }]
 
@@ -1536,8 +1536,7 @@ position = Vector2(584, 144)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
 sprite_frames = SubResource("SpriteFrames_o8fgo")
-frame = 3
-frame_progress = 1.0
+animation = &"open"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 visible = false

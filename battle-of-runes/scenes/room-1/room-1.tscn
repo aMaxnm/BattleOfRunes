@@ -1583,7 +1583,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_r01x8")
 }],
 "loop": false,
-"name": &"default",
+"name": &"open",
 "speed": 5.0
 }]
 
@@ -1616,9 +1616,10 @@ position = Vector2(568, 81)
 collision_layer = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
+position = Vector2(1, 0)
+scale = Vector2(1.0416666, 1)
 sprite_frames = SubResource("SpriteFrames_q48tg")
-frame = 3
-frame_progress = 1.0
+animation = &"open"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-16, -1)
@@ -1641,7 +1642,7 @@ script = ExtResource("10_q48tg")
 nextRoom = "res://scenes/room-2/room-2.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(552, 85.5)
+position = Vector2(552, 82)
 shape = SubResource("RectangleShape2D_r01x8")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
