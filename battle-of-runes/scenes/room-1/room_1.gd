@@ -30,5 +30,6 @@ func _ready() -> void:
 
 	if cam and cam.has_method("set_player"):
 		cam.call("set_player", player)
-
+	if has_node("/root/game_manager"):
+		get_node("/root/game_manager").pause_enabled = true
 	cam.make_current()

@@ -1,0 +1,157 @@
+[gd_scene load_steps=7 format=3 uid="uid://7etvja08odt6"]
+
+[ext_resource type="Script" uid="uid://v6s5adt61k3g" path="res://scenes/credits/credits.gd" id="1_8ggla"]
+[ext_resource type="Texture2D" uid="uid://d3nxfx8diymik" path="res://assets/assetsMenus/creditsBg.png" id="2_huu5m"]
+[ext_resource type="FontFile" uid="uid://0vb0ag4ks2bj" path="res://assets/fonts/fibberish.ttf" id="3_icb2l"]
+[ext_resource type="LabelSettings" uid="uid://d1m65di1lo8qe" path="res://scenes/credits/credits.tres" id="4_17l06"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_t15ab"]
+font = ExtResource("3_icb2l")
+font_size = 70
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lwbe5"]
+font = ExtResource("3_icb2l")
+font_size = 30
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Credits" type="CanvasLayer"]
+script = ExtResource("1_8ggla")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.105882354, 0.105882354, 0.105882354, 0.6)
+
+[node name="Panel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = -156.0
+offset_top = -29.999998
+offset_right = 1844.0
+offset_bottom = 870.0
+scale = Vector2(0.8, 0.8)
+mouse_filter = 2
+texture = ExtResource("2_huu5m")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -307.0
+offset_top = -320.0
+offset_right = 320.0
+offset_bottom = 295.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Creditos"
+label_settings = SubResource("LabelSettings_t15ab")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mario Jahel Garcia Xilonzochitl"
+label_settings = ExtResource("4_17l06")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Ramiro Benjamin Pimentel Munoz"
+label_settings = ExtResource("4_17l06")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Nuñez Morales Antonio Maximiliano"
+label_settings = ExtResource("4_17l06")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Juárez Limón Bryan"
+label_settings = ExtResource("4_17l06")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Alan Eduardo Ocegueda Turrubiartez"
+label_settings = ExtResource("4_17l06")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Hugo Enrique Garcia Ruiz"
+label_settings = ExtResource("4_17l06")
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "arthur alexander garcia jacinto"
+label_settings = ExtResource("4_17l06")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/TextureButton"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.5
+offset_top = -20.0
+offset_right = 52.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.81960785, 0.74509805, 0.60784316, 1)
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Volver"
+label_settings = SubResource("LabelSettings_lwbe5")
+horizontal_alignment = 1

@@ -10,9 +10,12 @@ extends Node2D
 @onready var ui: AudioStreamPlayer2D = $UiPlayer
 @onready var flash: ColorRect = $FxLayer/Flash
 @onready var game_manager := get_node("/root/game_manager")
+@onready var back_btn: TextureButton = $TextureButton
+@onready var back_bg: ColorRect = $TextureButton/ColorRect
+@onready var back_label: Label = $TextureButton/Label
 
 @export var gameplay_scene_path := "res://scenes/gameplay/gameplay.tscn"
-
+@export var start_menu_scene_path := "res://scenes/startMenu/startMenu.tscn"
 @export var sfx_select: AudioStream
 @export var sfx_confirm: AudioStream
 @export var sfx_hover: AudioStream
@@ -20,6 +23,8 @@ extends Node2D
 @onready var mage_mat := mage.material as ShaderMaterial
 @onready var archer_mat := archer.material as ShaderMaterial
 @onready var paladin_mat := paladin.material as ShaderMaterial
+const BACK_NORMAL := Color("6e6e6e62")
+const BACK_HOVER  := Color("6e6e6e") 
 
 var mage_base_scale: Vector2
 var archer_base_scale: Vector2
@@ -67,6 +72,18 @@ func _play_ui(stream: AudioStream) -> void:
 	ui.stream = stream
 	ui.play()
 
+func _go_start_menu() -> void:
+	if _transitioning:
+		return
+	_transitioning = true
+
+	_play_sfx(sfx_select)
+	_screen_flash()
+
+	await get_tree().create_timer(0.8).timeout
+	get_tree().change_scene_to_file(start_menu_scene_path)
+
+
 func _screen_flash() -> void:
 	flash.modulate.a = 0.0
 	var tw := create_tween()
@@ -106,10 +123,28 @@ func _ready():
 	mage_img = mage.texture_normal.get_image()
 	archer_img = archer.texture_normal.get_image()
 	paladin_img = paladin.texture_normal.get_image()
+	back_btn.mouse_filter = Control.MOUSE_FILTER_STOP
+	back_bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	back_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	back_bg.color = BACK_NORMAL
+	back_btn.mouse_entered.connect(func():
+		back_bg.color = BACK_HOVER
+		_play_ui(sfx_hover)
+	)
+
+	back_btn.mouse_exited.connect(func():
+		back_bg.color = BACK_NORMAL
+	)
+
+	back_btn.pressed.connect(func():
+		_go_start_menu()
+	)
 
 	top_info.set_label_x(300.0)
 	top_info.set_text("Selecciona personaje")
 	info_panel.hide_info()
+	if has_node("/root/game_manager"):
+		get_node("/root/game_manager").pause_enabled = false
 
 func _process(_delta):
 	_handle_hover(mage, mage_mat, mage_base_scale, mage_img)
@@ -179,3 +214,6 @@ func _on_archer_character_pressed() -> void:
 
 func _on_paladin_character_pressed() -> void:
 	_go_gameplay("paladinCharacter")
+
+func _on_ambience_player_finished() -> void:
+	ambience.play()

@@ -28,6 +28,8 @@ func _ready() -> void:
 		lbl.modulate = COLOR_NORMAL
 		_hovered[lbl] = false
 	flash.modulate.a = 0.0
+	if has_node("/root/game_manager"):
+		get_node("/root/game_manager").pause_enabled = false
 
 func _play_ui(stream: AudioStream) -> void:
 	if stream == null:
@@ -128,6 +130,8 @@ func _on_credits_pressed() -> void:
 		return
 	_play_ui(sfx_click)
 	_selection_fx(creditsLabel)
+	await get_tree().create_timer(0.8).timeout
+	get_tree().change_scene_to_file("res://scenes/credits/credits.tscn")
 
 func _on_exit_pressed() -> void:
 	if _transitioning:

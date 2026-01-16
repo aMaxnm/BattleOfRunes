@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dgq6t55rhl5al"]
+[gd_scene load_steps=27 format=3 uid="uid://dgq6t55rhl5al"]
 
 [ext_resource type="Script" uid="uid://bfghvjl3qvbk7" path="res://scenes/characterSelection/character_selection.gd" id="1_1p0sl"]
 [ext_resource type="Texture2D" uid="uid://qx0lmmagkfls" path="res://assets/assetsMenus/characterSelectionBackground.png" id="1_yp6kn"]
@@ -9,10 +9,17 @@
 [ext_resource type="Texture2D" uid="uid://1u3ae0o4utpl" path="res://assets/assetsMenus/arquero.png" id="5_a04tp"]
 [ext_resource type="Script" uid="uid://cji4bak6ejtm8" path="res://scenes/characterSelection/info_panel.gd" id="7_0lxgt"]
 [ext_resource type="Script" uid="uid://b1ccw02vu1tyx" path="res://scenes/characterSelection/top_info.gd" id="8_eowbf"]
+[ext_resource type="Texture2D" uid="uid://b2an3cfinj5t6" path="res://assets/assetsMenus/paladin.png" id="9_d70v5"]
 [ext_resource type="Texture2D" uid="uid://b0myfkn1xlg6d" path="res://assets/assetsMenus/texto3.png" id="9_g3jer"]
 [ext_resource type="FontFile" uid="uid://0vb0ag4ks2bj" path="res://assets/fonts/fibberish.ttf" id="10_k71t3"]
 [ext_resource type="AudioStream" uid="uid://cpodhokcjlcyr" path="res://assets/assetsSounds/fire.wav" id="11_g3jer"]
 [ext_resource type="AudioStream" uid="uid://driyh30wxlfev" path="res://assets/assetsSounds/selectionSong.ogg" id="12_k71t3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d70v5"]
+font = ExtResource("10_k71t3")
+font_size = 40
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0lxgt"]
 shader = ExtResource("2_by35b")
@@ -123,6 +130,39 @@ size_flags_vertical = 4
 layout_mode = 2
 texture = ExtResource("1_yp6kn")
 
+[node name="TextureButton" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(200, 40)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 51.0
+offset_top = 51.0
+offset_right = 251.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.43137255, 0.43137255, 0.43137255, 1)
+
+[node name="Label" type="Label" parent="TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Volver"
+label_settings = SubResource("LabelSettings_d70v5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="slots" type="Node2D" parent="."]
 
 [node name="mageCharacter" type="TextureButton" parent="slots"]
@@ -145,12 +185,12 @@ texture_normal = ExtResource("5_a04tp")
 
 [node name="paladinCharacter" type="TextureButton" parent="slots"]
 material = SubResource("ShaderMaterial_ygtt3")
-offset_left = 343.0
-offset_top = 11.0
-offset_right = 443.0
-offset_bottom = 111.0
-scale = Vector2(4, 4)
-texture_normal = ExtResource("5_a04tp")
+offset_left = 229.0
+offset_top = 53.0
+offset_right = 1509.0
+offset_bottom = 906.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("9_d70v5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(567, 420.00003)
@@ -255,3 +295,4 @@ volume_db = 10.0
 [connection signal="pressed" from="slots/mageCharacter" to="." method="_on_mage_character_pressed"]
 [connection signal="pressed" from="slots/archerCharacter" to="." method="_on_archer_character_pressed"]
 [connection signal="pressed" from="slots/paladinCharacter" to="." method="_on_paladin_character_pressed"]
+[connection signal="finished" from="AmbiencePlayer" to="." method="_on_ambience_player_finished"]
