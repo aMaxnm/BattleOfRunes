@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 BulletManager="*res://singletons/bullet_manager.gd"
 game_manager="*res://singletons/game_manager.gd"
+PlayerFireRouter="*res://singletons/player_fire_router.gd"
+ArrowUpgradeManager="*res://singletons/arrow_upgrade_manager.gd"
+SpellUpgradeManager="*res://singletons/spell_upgrade_manager.gd"
+SwordUpgradeManager="*res://singletons/sword_upgrade_manager.gd"
 
 [input]
 
@@ -54,6 +58,7 @@ shoot={
 2d_physics/layer_2="enemy"
 2d_physics/layer_3="world"
 2d_physics/layer_4="interact"
+2d_physics/layer_5="projectile"
 
 [rendering]
 

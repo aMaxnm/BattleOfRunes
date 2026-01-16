@@ -1,5 +1,6 @@
 extends CharacterBody2D
 class_name Player
+@export var character_type: PlayerFireRouter.CharacterType
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var arm_pivot = $ArmPivot
 @onready var arm_sprite = $ArmPivot/Arm
@@ -46,8 +47,7 @@ func aim_arms() -> void:
 	
 	if Input.is_action_pressed("shoot") and can_shoot:
 		can_shoot = false
-		#BulletManager.create_player_bullet(left_arm_pivot.rotation, left_marker.global_position)
-		#BulletManager.create_player_bullet(right_arm_pivot.rotation, right_marker.global_position)
+		PlayerFireRouter.fire(character_type,arm_pivot.rotation,marker.global_position)
 		shoot_timer.start()
 
 func _on_timer_timeout() -> void:

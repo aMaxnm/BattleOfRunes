@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://g8dfr3o2c0g8"]
+
+[ext_resource type="Script" uid="uid://st2bioe7cjp8" path="res://scenes/proyectiles/arquero/arrow_base.gd" id="1_iulsr"]
+[ext_resource type="Texture2D" uid="uid://cvg1fdo3enmu" path="res://assets/sprites/player/arquero-spritesheet.png" id="2_uagrv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iulsr"]
+size = Vector2(7, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uagrv"]
+radius = 2.236068
+
+[node name="ArrowBase" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_iulsr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_iulsr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(0, -0.5)
+texture = ExtResource("2_uagrv")
+hframes = 6
+vframes = 5
+frame = 28
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3, 0)
+shape = SubResource("CircleShape2D_uagrv")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

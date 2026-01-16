@@ -80,6 +80,7 @@ vframes = 5
 frame = 27
 
 [node name="Marker2D" type="Marker2D" parent="ArmPivot"]
+position = Vector2(10, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
