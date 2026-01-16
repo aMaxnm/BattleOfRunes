@@ -17,6 +17,7 @@ script = ExtResource("1_iulsr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_iulsr")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 10

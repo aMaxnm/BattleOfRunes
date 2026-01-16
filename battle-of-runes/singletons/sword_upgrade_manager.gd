@@ -1,11 +1,13 @@
 extends Node
+var projectile_scene = preload("res://scenes/proyectiles/paladin/sword_base.tscn")
 
+func fire(rotation: float, spawn_pos: Vector2) -> void:
+	if projectile_scene == null:
+		push_error("SwordUpgradeManager: projectile_scene not assigned")
+		return
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+	var projectile = projectile_scene.instantiate()
+	projectile.global_position = spawn_pos
+	projectile.rotation = rotation
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	get_tree().current_scene.add_child(projectile)

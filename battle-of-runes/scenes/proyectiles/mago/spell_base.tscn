@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf4p3jfoiawrh"]
+
+[ext_resource type="Script" uid="uid://dpdd00rt8asse" path="res://scenes/proyectiles/mago/spell_base.gd" id="1_6nbco"]
+[ext_resource type="Texture2D" uid="uid://d2yyec02i1gwk" path="res://assets/sprites/player/mago-spritesheet.png" id="1_i4dut"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i4dut"]
+radius = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6nbco"]
+radius = 3.0
+
+[node name="SpellBase" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_6nbco")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_i4dut")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_i4dut")
+hframes = 6
+vframes = 5
+frame = 28
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(3, 0)
+shape = SubResource("CircleShape2D_6nbco")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
