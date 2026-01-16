@@ -61,7 +61,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kv3vx"]
 size = Vector2(12, 16)
 
-[node name="Paladin" type="CharacterBody2D"]
+[node name="Paladin" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 4
 script = ExtResource("1_jev62")
 character_type = 1

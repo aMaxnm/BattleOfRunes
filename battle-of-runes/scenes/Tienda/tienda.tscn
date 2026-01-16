@@ -1,26 +1,27 @@
-[gd_scene load_steps=47 format=3 uid="uid://s4nw0jgtja0m"]
+[gd_scene load_steps=48 format=3 uid="uid://s4nw0jgtja0m"]
 
-[ext_resource type="Texture2D" uid="uid://bu0pbqpvr8gk5" path="res://assets/backgrounds/TiendaFondo.png" id="1_2puif"]
-[ext_resource type="Script" uid="uid://dvnvphultsvfi" path="res://scenes/tienda.gd" id="1_nmus3"]
-[ext_resource type="Texture2D" uid="uid://b8owtagw7yvfa" path="res://assets/button/pocionAzul.png" id="2_1afbe"]
-[ext_resource type="Texture2D" uid="uid://cyjiyxqh2yfqy" path="res://assets/button/PuertaCerrada.png" id="2_3a5gv"]
-[ext_resource type="Texture2D" uid="uid://22xm5piy34gh" path="res://assets/sprites/vendedor.png" id="2_lkpmm"]
-[ext_resource type="Texture2D" uid="uid://bkrnmylbtycuk" path="res://assets/button/PuertaAbierta.png" id="3_4lx8e"]
-[ext_resource type="Texture2D" uid="uid://b6iygy2rss8fb" path="res://assets/button/pocionRoja.png" id="3_hlcuo"]
-[ext_resource type="Texture2D" uid="uid://cujddbma4ugbe" path="res://assets/button/pocionMorada.png" id="3_lkpmm"]
-[ext_resource type="Texture2D" uid="uid://dv6f13evwi382" path="res://assets/sprites/pagaste.png" id="4_c4go7"]
-[ext_resource type="Texture2D" uid="uid://bhb3t8rb4y0im" path="res://assets/sprites/vendedorI.png" id="5_77gaw"]
-[ext_resource type="Texture2D" uid="uid://di58oc23dpc08" path="res://assets/sprites/pagaste2.png" id="5_nmus3"]
-[ext_resource type="Texture2D" uid="uid://clvso7u5hk1hq" path="res://assets/button/pocionVerde.png" id="7_hlcuo"]
-[ext_resource type="Texture2D" uid="uid://dxam6y571vhdq" path="res://assets/sprites/espacio.png" id="8_ahx5p"]
+[ext_resource type="Texture2D" uid="uid://8kidwc3ex6sv" path="res://assets/backgrounds/TiendaFondo.png" id="1_2puif"]
+[ext_resource type="Script" uid="uid://dvnvphultsvfi" path="res://scenes/Tienda/tienda.gd" id="1_nmus3"]
+[ext_resource type="Texture2D" uid="uid://d1c63k32os88y" path="res://assets/button/pocionAzul.png" id="2_1afbe"]
+[ext_resource type="Texture2D" uid="uid://bjjnt1fmd6iqk" path="res://assets/button/PuertaCerrada.png" id="2_3a5gv"]
+[ext_resource type="Texture2D" uid="uid://8gsyec3wjfyr" path="res://assets/sprites/vendedor.png" id="2_lkpmm"]
+[ext_resource type="PackedScene" uid="uid://17sdoee6lo6x" path="res://scenes/room-3/room-3.tscn" id="2_n0qgs"]
+[ext_resource type="Texture2D" uid="uid://c6sl4hh4r3e5u" path="res://assets/button/PuertaAbierta.png" id="3_4lx8e"]
+[ext_resource type="Texture2D" uid="uid://dogxuh1mwqd1" path="res://assets/button/pocionRoja.png" id="3_hlcuo"]
+[ext_resource type="Texture2D" uid="uid://ddmva8etsi3ic" path="res://assets/button/pocionMorada.png" id="3_lkpmm"]
+[ext_resource type="Texture2D" uid="uid://dy23nekok508i" path="res://assets/sprites/pagaste.png" id="4_c4go7"]
+[ext_resource type="Texture2D" uid="uid://c12q8kek8j8xx" path="res://assets/sprites/vendedorI.png" id="5_77gaw"]
+[ext_resource type="Texture2D" uid="uid://cqvjub17x6vgc" path="res://assets/sprites/pagaste2.png" id="5_nmus3"]
+[ext_resource type="Texture2D" uid="uid://dbgbca3svywu0" path="res://assets/button/pocionVerde.png" id="7_hlcuo"]
+[ext_resource type="Texture2D" uid="uid://e4fgo0jjelus" path="res://assets/sprites/espacio.png" id="8_ahx5p"]
 [ext_resource type="Texture2D" uid="uid://bgt52y8i7yiv5" path="res://assets/button/pocionAzulHover.png" id="10_bftsm"]
-[ext_resource type="Texture2D" uid="uid://c8j7kf61dt01l" path="res://assets/sprites/velocidad.png" id="10_l4l4x"]
+[ext_resource type="Texture2D" uid="uid://ct4f334uou6wq" path="res://assets/sprites/velocidad.png" id="10_l4l4x"]
 [ext_resource type="Texture2D" uid="uid://bess7aha7feok" path="res://assets/button/pocionAzulPresed.png" id="10_ulnbo"]
-[ext_resource type="Texture2D" uid="uid://dqslgjtmsmiyd" path="res://assets/sprites/vida.png" id="12_nrlqo"]
+[ext_resource type="Texture2D" uid="uid://dsb4v6qym37qh" path="res://assets/sprites/vida.png" id="12_nrlqo"]
 [ext_resource type="Texture2D" uid="uid://6u2yhe7ftwcw" path="res://assets/button/pocionRojaPresed.png" id="14_2kswj"]
-[ext_resource type="Texture2D" uid="uid://d17c06vn6sk11" path="res://assets/sprites/daño.png" id="15_gmw26"]
+[ext_resource type="Texture2D" uid="uid://cj6jwgd85p6fw" path="res://assets/sprites/daño.png" id="15_gmw26"]
 [ext_resource type="Texture2D" uid="uid://ba546owi6ppf3" path="res://assets/button/pocionRojaHover.png" id="15_id20v"]
-[ext_resource type="Texture2D" uid="uid://cmggfytdp61bi" path="res://assets/sprites/recarga.png" id="17_bftsm"]
+[ext_resource type="Texture2D" uid="uid://c1cofbtissu7u" path="res://assets/sprites/recarga.png" id="17_bftsm"]
 [ext_resource type="Texture2D" uid="uid://bub0p5ru6lmpr" path="res://assets/button/pocionMoradaPresed.png" id="19_jxyx4"]
 [ext_resource type="Texture2D" uid="uid://bqemyl32di6yn" path="res://assets/button/pocionMoradaHover.png" id="20_dubyl"]
 [ext_resource type="Texture2D" uid="uid://dudp8t6i6xsii" path="res://assets/button/pocionVerdePresed.png" id="23_y15xd"]
@@ -196,6 +197,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nmus3")
+nextRoom = ExtResource("2_n0qgs")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
@@ -287,6 +289,7 @@ texture_disabled = ExtResource("23_y15xd")
 layout_mode = 2
 texture = ExtResource("17_bftsm")
 
+[connection signal="pressed" from="Salida" to="." method="_on_salida_pressed"]
 [connection signal="focus_entered" from="HBoxContainer/VBoxContainer/mejoraVelocidad" to="." method="_on_mejora_velocidad_focus_entered"]
 [connection signal="focus_exited" from="HBoxContainer/VBoxContainer/mejoraVelocidad" to="." method="_on_mejora_velocidad_focus_exited"]
 [connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/mejoraVelocidad" to="." method="_on_mejora_velocidad_mouse_entered"]

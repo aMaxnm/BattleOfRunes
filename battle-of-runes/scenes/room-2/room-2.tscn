@@ -1,8 +1,8 @@
 [gd_scene load_steps=28 format=4 uid="uid://d117aoxtnph3e"]
 
-[ext_resource type="Script" path="res://scenes/room-2/room_2.gd" id="1_ou5vq"]
+[ext_resource type="Script" uid="uid://bf427782jl3cx" path="res://scenes/room-2/room_2.gd" id="1_ou5vq"]
 [ext_resource type="Texture2D" uid="uid://dw5f141l4a0n0" path="res://assets/assets-niveles/DampDungeons/Tiles/Dungeon_Autotiles.png" id="1_vli55"]
-[ext_resource type="PackedScene" uid="uid://17sdoee6lo6x" path="res://scenes/room-3/room-3.tscn" id="2_d487y"]
+[ext_resource type="PackedScene" uid="uid://s4nw0jgtja0m" path="res://scenes/Tienda/tienda.tscn" id="2_fxja4"]
 [ext_resource type="Texture2D" uid="uid://u5g78o1s0g8l" path="res://assets/assets-niveles/DampDungeons/Tiles/Dungeon_WallsAndFloors.png" id="2_o8fgo"]
 [ext_resource type="PackedScene" uid="uid://ckxtsg8o8b8bo" path="res://scenes/player/mago.tscn" id="3_g2s82"]
 [ext_resource type="Texture2D" uid="uid://ie2d5o1x7opv" path="res://assets/assets-niveles/DampDungeons/Tiles/DungeonDecorations.png" id="3_gma22"]
@@ -1499,7 +1499,7 @@ size = Vector2(16, 20)
 
 [node name="Room2" type="Node2D" groups=["room"]]
 script = ExtResource("1_ou5vq")
-nextRoom = ExtResource("2_d487y")
+nextRoom = ExtResource("2_fxja4")
 mage_scene = ExtResource("3_g2s82")
 archer_scene = ExtResource("7_d487y")
 paladin_scene = ExtResource("5_fxja4")

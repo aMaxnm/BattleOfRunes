@@ -1,6 +1,6 @@
 extends MarginContainer
 @onready var sprite = $Vendedor/AnimatedSprite2D
-
+@export var nextRoom: PackedScene
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -84,3 +84,10 @@ func _on_mejora_velocidad_mouse_entered() -> void:
 func _on_mejora_velocidad_mouse_exited() -> void:
 	sprite.play("saludo")
 	pass # Replace with function body.
+
+
+func _on_salida_pressed() -> void:
+	changeScene()
+
+func changeScene():
+	get_tree().change_scene_to_packed(nextRoom)
