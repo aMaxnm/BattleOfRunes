@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://1u3ae0o4utpl" path="res://assets/assetsMenus/arquero.png" id="5_a04tp"]
 [ext_resource type="Script" uid="uid://cji4bak6ejtm8" path="res://scenes/characterSelection/info_panel.gd" id="7_0lxgt"]
 [ext_resource type="Script" uid="uid://b1ccw02vu1tyx" path="res://scenes/characterSelection/top_info.gd" id="8_eowbf"]
-[ext_resource type="Texture2D" uid="uid://b2an3cfinj5t6" path="res://assets/assetsMenus/paladin.png" id="9_d70v5"]
+[ext_resource type="Texture2D" uid="uid://d17x4ovm0s7vo" path="res://assets/assetsMenus/paladin.png" id="9_d70v5"]
 [ext_resource type="Texture2D" uid="uid://b0myfkn1xlg6d" path="res://assets/assetsMenus/texto3.png" id="9_g3jer"]
 [ext_resource type="FontFile" uid="uid://0vb0ag4ks2bj" path="res://assets/fonts/fibberish.ttf" id="10_k71t3"]
 [ext_resource type="AudioStream" uid="uid://cpodhokcjlcyr" path="res://assets/assetsSounds/fire.wav" id="11_g3jer"]
@@ -185,10 +185,10 @@ texture_normal = ExtResource("5_a04tp")
 
 [node name="paladinCharacter" type="TextureButton" parent="slots"]
 material = SubResource("ShaderMaterial_ygtt3")
-offset_left = 229.0
-offset_top = 53.0
-offset_right = 1509.0
-offset_bottom = 906.0
+offset_left = 467.0
+offset_top = 137.0
+offset_right = 897.0
+offset_bottom = 689.0
 scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("9_d70v5")
 
