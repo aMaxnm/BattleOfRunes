@@ -1,32 +1,20 @@
 extends Area2D
 class_name BatBullet
 
-var speed: float = 300.0
-var direction: Vector2 = Vector2.ZERO
-
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var life_timer: Timer = $Timer
-
-# --------------------------------------------------
-
-func _ready() -> void:
-	life_timer.wait_time = 2.0
-	life_timer.one_shot = true
-	life_timer.timeout.connect(queue_free)
-	life_timer.start()
-
-	body_entered.connect(_on_body_entered)
-
-	sprite.play("fly")
-
-
+var speed: float = 100.0
+var direction: Vector2 = Vector2.ZERO   # se asigna al disparar
 
 func _process(delta: float) -> void:
+	# movimiento recto en la dirección calculada al disparar
 	global_position += direction * speed * delta
 
-
-
 func _on_body_entered(body: Node) -> void:
+	# Solo afecta al Player
 	if body.is_in_group("Player") and body.has_method("take_damage"):
 		body.take_damage(1)
 		queue_free()
+	# Si choca con cualquier otra cosa que no sea Enemy, se destruye
+
+func _on_VisibilityNotifier2D_screen_exited() -> void:
+	# cuando la bala sale de la pantalla, se destruye
+	queue_free()
