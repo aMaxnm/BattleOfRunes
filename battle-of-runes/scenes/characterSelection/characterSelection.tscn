@@ -1,0 +1,257 @@
+[gd_scene load_steps=25 format=3 uid="uid://dgq6t55rhl5al"]
+
+[ext_resource type="Script" uid="uid://bfghvjl3qvbk7" path="res://scenes/characterSelection/character_selection.gd" id="1_1p0sl"]
+[ext_resource type="Texture2D" uid="uid://qx0lmmagkfls" path="res://assets/assetsMenus/characterSelectionBackground.png" id="1_yp6kn"]
+[ext_resource type="Shader" uid="uid://cy0mbmlglt3h2" path="res://scenes/characterSelection/characterSelection.gdshader" id="2_by35b"]
+[ext_resource type="Texture2D" uid="uid://cugn40stfkfra" path="res://assets/assetsMenus/mago.png" id="3_1p0sl"]
+[ext_resource type="AudioStream" uid="uid://dtmnfwqpnhf6g" path="res://assets/assetsSounds/001_Hover_01.wav" id="3_dg32c"]
+[ext_resource type="Texture2D" uid="uid://cmfeed5he3qhd" path="res://assets/assetsMenus/campfire-Sheet.png" id="4_a04tp"]
+[ext_resource type="Texture2D" uid="uid://1u3ae0o4utpl" path="res://assets/assetsMenus/arquero.png" id="5_a04tp"]
+[ext_resource type="Script" uid="uid://cji4bak6ejtm8" path="res://scenes/characterSelection/info_panel.gd" id="7_0lxgt"]
+[ext_resource type="Script" uid="uid://b1ccw02vu1tyx" path="res://scenes/characterSelection/top_info.gd" id="8_eowbf"]
+[ext_resource type="Texture2D" uid="uid://b0myfkn1xlg6d" path="res://assets/assetsMenus/texto3.png" id="9_g3jer"]
+[ext_resource type="FontFile" uid="uid://0vb0ag4ks2bj" path="res://assets/fonts/fibberish.ttf" id="10_k71t3"]
+[ext_resource type="AudioStream" uid="uid://cpodhokcjlcyr" path="res://assets/assetsSounds/fire.wav" id="11_g3jer"]
+[ext_resource type="AudioStream" uid="uid://driyh30wxlfev" path="res://assets/assetsSounds/selectionSong.ogg" id="12_k71t3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lxgt"]
+shader = ExtResource("2_by35b")
+shader_parameter/outline_color = Color(1, 1, 0.3, 1)
+shader_parameter/outline_size = 1.0
+shader_parameter/enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uhq4b"]
+shader = ExtResource("2_by35b")
+shader_parameter/outline_color = Color(1, 1, 0.3, 1)
+shader_parameter/outline_size = 1.0
+shader_parameter/enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ygtt3"]
+shader = ExtResource("2_by35b")
+shader_parameter/outline_color = Color(1, 1, 0.3, 1)
+shader_parameter/outline_size = 1.0
+shader_parameter/enabled = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhq4b"]
+atlas = ExtResource("4_a04tp")
+region = Rect2(0, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygtt3"]
+atlas = ExtResource("4_a04tp")
+region = Rect2(36, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eowbf"]
+atlas = ExtResource("4_a04tp")
+region = Rect2(72, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3jer"]
+atlas = ExtResource("4_a04tp")
+region = Rect2(108, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k71t3"]
+atlas = ExtResource("4_a04tp")
+region = Rect2(144, 0, 36, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg32c"]
+atlas = ExtResource("4_a04tp")
+region = Rect2(180, 0, 36, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d70v5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhq4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygtt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eowbf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3jer")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k71t3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg32c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dg32c"]
+font = ExtResource("10_k71t3")
+font_size = 80
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="CharacterSelection" type="Node2D"]
+position = Vector2(1, 1)
+script = ExtResource("1_1p0sl")
+gameplay_scene_path = "res://scenes/room-1/room-1.tscn"
+sfx_select = ExtResource("12_k71t3")
+sfx_confirm = ExtResource("12_k71t3")
+sfx_hover = ExtResource("3_dg32c")
+
+[node name="FxLayer" type="CanvasLayer" parent="."]
+
+[node name="Flash" type="ColorRect" parent="FxLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = 1904.0
+offset_bottom = 1100.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_yp6kn")
+
+[node name="slots" type="Node2D" parent="."]
+
+[node name="mageCharacter" type="TextureButton" parent="slots"]
+material = SubResource("ShaderMaterial_0lxgt")
+offset_left = 94.0
+offset_top = 216.00002
+offset_right = 194.0
+offset_bottom = 316.0
+scale = Vector2(2.6, 2.6)
+texture_normal = ExtResource("3_1p0sl")
+
+[node name="archerCharacter" type="TextureButton" parent="slots"]
+material = SubResource("ShaderMaterial_uhq4b")
+offset_left = 711.0
+offset_top = 104.0
+offset_right = 811.0
+offset_bottom = 204.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("5_a04tp")
+
+[node name="paladinCharacter" type="TextureButton" parent="slots"]
+material = SubResource("ShaderMaterial_ygtt3")
+offset_left = 343.0
+offset_top = 11.0
+offset_right = 443.0
+offset_bottom = 111.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("5_a04tp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(567, 420.00003)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_d70v5")
+autoplay = "default"
+frame_progress = 0.8443793
+
+[node name="InfoPanel" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("7_0lxgt")
+
+[node name="Panel" type="Panel" parent="InfoPanel"]
+custom_minimum_size = Vector2(220, 120)
+layout_mode = 1
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoPanel/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 50.0
+mouse_filter = 2
+
+[node name="Nombre" type="Label" parent="InfoPanel/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Descripcion" type="Label" parent="InfoPanel/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="TopInfo" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -4.0
+offset_top = 3.0
+offset_right = 36.0
+offset_bottom = 43.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("8_eowbf")
+
+[node name="Panel" type="Panel" parent="TopInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="TopInfo/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 191.0
+offset_top = -157.0
+offset_right = 1431.0
+offset_bottom = 656.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+texture = ExtResource("9_g3jer")
+
+[node name="Label" type="Label" parent="TopInfo/Panel/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -59.833344
+offset_right = 485.0
+offset_bottom = 28.166656
+grow_horizontal = 2
+grow_vertical = 2
+text = "Selecciona personaje"
+label_settings = SubResource("LabelSettings_dg32c")
+
+[node name="AmbiencePlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_g3jer")
+volume_db = 24.0
+autoplay = true
+
+[node name="SfxPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_k71t3")
+
+[node name="UiPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_k71t3")
+volume_db = 10.0
+
+[connection signal="pressed" from="slots/mageCharacter" to="." method="_on_mage_character_pressed"]
+[connection signal="pressed" from="slots/archerCharacter" to="." method="_on_archer_character_pressed"]
+[connection signal="pressed" from="slots/paladinCharacter" to="." method="_on_paladin_character_pressed"]
