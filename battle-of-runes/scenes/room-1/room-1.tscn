@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://b16bqgdrl0pau"]
+[gd_scene load_steps=29 format=4 uid="uid://b16bqgdrl0pau"]
 
 [ext_resource type="Texture2D" uid="uid://dw5f141l4a0n0" path="res://assets/assets-niveles/DampDungeons/Tiles/Dungeon_Autotiles.png" id="1_svyhc"]
 [ext_resource type="Texture2D" uid="uid://u5g78o1s0g8l" path="res://assets/assets-niveles/DampDungeons/Tiles/Dungeon_WallsAndFloors.png" id="2_2onwg"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dvq3anynaj73c" path="res://scenes/utility/camera/player_camera.tscn" id="8_e8tnf"]
 [ext_resource type="PackedScene" uid="uid://b73fdhgkatq1w" path="res://scenes/enemies/orc/orc.tscn" id="9_r01x8"]
 [ext_resource type="Script" uid="uid://dvnnhqd3e6mr3" path="res://scenes/room-1/area_2d.gd" id="10_q48tg"]
+[ext_resource type="PackedScene" uid="uid://cykjweis0n8v6" path="res://scenes/enemies/bat/bat.tscn" id="11_ki4n7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tiip4"]
 texture = ExtResource("1_svyhc")
@@ -1632,9 +1633,6 @@ position = Vector2(65, 210)
 zoom = Vector2(3, 3)
 player = NodePath("../Arquero")
 
-[node name="Orc" parent="." instance=ExtResource("9_r01x8")]
-position = Vector2(545, 153.00002)
-
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, 3)
 collision_layer = 8
@@ -1644,5 +1642,11 @@ nextRoom = "res://scenes/room-2/room-2.tscn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(552, 82)
 shape = SubResource("RectangleShape2D_r01x8")
+
+[node name="Orc" parent="." instance=ExtResource("9_r01x8")]
+position = Vector2(496, 163)
+
+[node name="Bat" parent="." instance=ExtResource("11_ki4n7")]
+position = Vector2(499, 307)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

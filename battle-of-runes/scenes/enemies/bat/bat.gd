@@ -13,7 +13,7 @@ var attack_distance: float = 200.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
-@onready var hitbox: Area2D = $HitBox
+@onready var hitbox: Area2D = $Hitbox
 @onready var shoot_timer: Timer = $ShootTimer
 @onready var shoot_marker: Marker2D = $Marker2D
 

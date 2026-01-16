@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cykjweis0n8v6"]
+[gd_scene load_steps=41 format=3 uid="uid://cykjweis0n8v6"]
 
 [ext_resource type="Script" uid="uid://cjls71b8kguv1" path="res://scenes/enemies/bat/bat.gd" id="1_r0j5n"]
 [ext_resource type="Texture2D" uid="uid://dkeunqgjk00kb" path="res://assets/sprites/enemies/bat/Bat_Attack.png" id="1_ym81o"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://d11xinnx4lcfc" path="res://assets/sprites/enemies/bat/Bat_Hit.png" id="3_r0j5n"]
 [ext_resource type="Texture2D" uid="uid://c8wf2shh6kpia" path="res://assets/sprites/enemies/bat/Bat_Death_FX.png" id="3_stf8a"]
 [ext_resource type="Texture2D" uid="uid://05adr25htvfs" path="res://assets/sprites/enemies/bat/Bat_Death.png" id="4_3tkmu"]
-[ext_resource type="PackedScene" uid="uid://p501itd0m8in" path="res://scenes/enemies/bat/bat_bullet.tscn" id="7_3tkmu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v5rac"]
 atlas = ExtResource("1_ym81o")
@@ -256,7 +255,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_cdc2g"]
 radius = 5.0990195
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vyn4m"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_r0j5n"]
 radius = 7.0
 
 [node name="Bat" type="CharacterBody2D"]
@@ -272,15 +271,16 @@ frame_progress = 0.81953436
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_cdc2g")
 
-[node name="Hitbox" type="Area2D" parent="CollisionShape2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Hitbox"]
-shape = SubResource("CircleShape2D_vyn4m")
-debug_color = Color(0.99481493, 0, 0.2234495, 0.41960785)
-script = ExtResource("1_r0j5n")
-bullet_scene = ExtResource("7_3tkmu")
-
 [node name="ShootTimer" type="Timer" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(7, 3)
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_r0j5n")
+debug_color = Color(0.8770401, 0.32816267, 0.2683811, 0.41960785)
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
