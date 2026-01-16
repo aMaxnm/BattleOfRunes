@@ -33,6 +33,8 @@ func _ready() -> void:
 
 	if scene_to_spawn == null:
 		return
+	if has_node("/root/game_manager"):
+		get_node("/root/game_manager").pause_enabled = true
 
 	var player := scene_to_spawn.instantiate() as Node2D
 	add_child(player)
