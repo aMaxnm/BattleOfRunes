@@ -13,18 +13,32 @@ var door_opened := false
 @export var mage_scene: PackedScene
 @export var archer_scene: PackedScene
 @export var paladin_scene: PackedScene
-
 func _ready() -> void:
+	var gm := get_node_or_null("/root/game_manager")
 	var key := ""
-	if has_node("/root/game_manager"):
-		key = get_node("/root/game_manager").selected_character
+	if gm != null:
+		key = gm.selected_character
 
+	# Si llega vacío, pon default (o lanza warning)
+	if key == "":
+		push_warning("selected_character vacío; usando mageCharacter por default")
+		key = "mageCharacter"
+
+	# --- BORRAR players previos (si existe alguno en la escena) ---
+	for p in get_tree().get_nodes_in_group("player"):
+		if is_instance_valid(p):
+			p.queue_free()
+
+	# --- Contar enemigos correctamente ---
 	var enemies := get_tree().get_nodes_in_group("enemies")
-	enemies_alive = enemies.size()
+	enemies_alive = 0
 	for e in enemies:
-		print("👾 Enemigo detectado:", e.name)
+		if e.is_inside_tree():
+			enemies_alive += 1
+	print("Enemigos activos:", enemies_alive)
 
-	var scene_to_spawn: PackedScene = mage_scene
+	# --- Elegir escena del personaje ---
+	var scene_to_spawn: PackedScene = null
 	match key:
 		"mageCharacter":
 			scene_to_spawn = mage_scene
@@ -32,30 +46,30 @@ func _ready() -> void:
 			scene_to_spawn = archer_scene
 		"paladinCharacter":
 			scene_to_spawn = paladin_scene
+		_:
+			scene_to_spawn = mage_scene
 
 	if scene_to_spawn == null:
+		push_error("scene_to_spawn es null")
 		return
 
+	# --- Instanciar player ---
 	var player := scene_to_spawn.instantiate() as Node2D
 	add_child(player)
 	player.global_position = spawn_point.global_position
-	player.add_to_group("Player")
+	player.add_to_group("player") # <-- minúsculas
 
+	# --- Cámara ---
 	if cam and cam.has_method("set_player"):
 		cam.call("set_player", player)
-	if has_node("/root/game_manager"):
-		get_node("/root/game_manager").pause_enabled = true
+
+	if gm != null:
+		gm.pause_enabled = true
+
 	cam.make_current()
+
 	# Desactivar salida
 	exit_area_collision.disabled = true
-
-	# Contar enemigos al inicio
-	enemies_alive = get_tree().get_nodes_in_group("enemies").size()
-	enemies_alive = 0
-	for e in enemies:
-		if e.is_inside_tree():
-			enemies_alive += 1
-	print("Enemigos activos:", enemies_alive)
 
 
 func changeScene():
