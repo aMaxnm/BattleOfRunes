@@ -24,7 +24,7 @@ hframes = 6
 vframes = 5
 frame = 28
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["PlayerBullet"]]
 collision_layer = 16
 collision_mask = 2
 

@@ -60,9 +60,10 @@ func follow_player():
 		move_and_slide()
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
+	print("hit")
 	if body.is_in_group("PlayerBullet"):
+		print("hit")
 		take_damage(1)
-		body.queue_free() # opcional: destruir la bala al impactar
 
 func take_damage(amount: int):
 	if current_state == State.DEATH:

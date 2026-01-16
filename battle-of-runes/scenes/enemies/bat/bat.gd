@@ -123,4 +123,5 @@ func _on_sprite_frame_changed() -> void:
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerBullet"):
+		print("hit")
 		take_damage(1)

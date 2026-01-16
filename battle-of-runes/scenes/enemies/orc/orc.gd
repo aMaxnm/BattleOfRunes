@@ -65,9 +65,9 @@ func follow_player():
 		velocity = Vector2.ZERO
 
 # Orc recibe daño (balas del Player)
-
 func _on_hit_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerBullet"):
+		print("hit")
 		take_damage(1)
 		
 # Orc inflige daño al Player

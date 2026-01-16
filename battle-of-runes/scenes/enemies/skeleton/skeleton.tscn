@@ -135,5 +135,4 @@ debug_color = Color(0.7232182, 0.47823155, 0, 0.41960785)
 [node name="Timer" type="Timer" parent="."]
 
 [connection signal="sprite_frames_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_sprite_frames_changed"]
-[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
-[connection signal="body_entered" from="AttackHitBox" to="." method="_on_attack_hit_box_body_entered"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

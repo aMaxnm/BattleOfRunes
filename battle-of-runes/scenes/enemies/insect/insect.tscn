@@ -149,6 +149,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-9, 5)
 shape = SubResource("CapsuleShape2D_jkpms")
 
@@ -162,6 +163,7 @@ shape = SubResource("CapsuleShape2D_xr0le")
 debug_color = Color(0.9973183, 0, 0.17831245, 0.41960785)
 
 [node name="AttackHitBox" type="Area2D" parent="."]
+visible = false
 collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitBox"]

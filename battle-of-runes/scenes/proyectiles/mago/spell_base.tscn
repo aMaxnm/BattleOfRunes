@@ -9,7 +9,7 @@ radius = 2.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_6nbco"]
 radius = 3.0
 
-[node name="SpellBase" type="CharacterBody2D" groups=["PlayerBullet"]]
+[node name="SpellBase" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_6nbco")
@@ -24,7 +24,7 @@ hframes = 6
 vframes = 5
 frame = 28
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["PlayerBullet"]]
 collision_layer = 16
 collision_mask = 2
 

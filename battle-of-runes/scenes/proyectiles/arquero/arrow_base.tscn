@@ -9,9 +9,9 @@ size = Vector2(7, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_uagrv"]
 radius = 2.236068
 
-[node name="ArrowBase" type="CharacterBody2D" groups=["PlayerBullet"]]
-collision_layer = 16
-collision_mask = 2
+[node name="ArrowBase" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_iulsr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -27,7 +27,7 @@ hframes = 6
 vframes = 5
 frame = 28
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["PlayerBullet"]]
 collision_layer = 16
 collision_mask = 2
 
@@ -37,5 +37,10 @@ shape = SubResource("CircleShape2D_uagrv")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
