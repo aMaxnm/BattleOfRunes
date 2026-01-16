@@ -64,11 +64,11 @@ size = Vector2(12, 16)
 [node name="Paladin" type="CharacterBody2D"]
 script = ExtResource("1_jev62")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="ArmPivot" type="Node2D" parent="."]
 
-[node name="Marker2D" type="Marker2D" parent="Node2D"]
+[node name="Marker2D" type="Marker2D" parent="ArmPivot"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+[node name="Arm" type="Sprite2D" parent="ArmPivot"]
 position = Vector2(4, 0)
 texture = ExtResource("1_kv3vx")
 hframes = 6
