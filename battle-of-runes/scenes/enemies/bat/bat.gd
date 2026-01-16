@@ -12,7 +12,7 @@ var attack_distance: float = 100.0
 @export var bullet_scene: PackedScene
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var hitbox: Area2D = $HitBox
+@onready var hitbox: Area2D = $Hitbox
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var shoot_timer: Timer = $ShootTimer
 @onready var shoot_marker: Marker2D = $Marker2D
@@ -118,3 +118,8 @@ func _on_sprite_frame_changed() -> void:
 		var total_frames = sprite.sprite_frames.get_frame_count("death")
 		if sprite.frame == total_frames - 1:
 			queue_free()
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		die()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://d117aoxtnph3e"]
+[gd_scene load_steps=29 format=4 uid="uid://d117aoxtnph3e"]
 
 [ext_resource type="Script" uid="uid://bf427782jl3cx" path="res://scenes/room-2/room_2.gd" id="1_ou5vq"]
 [ext_resource type="Texture2D" uid="uid://dw5f141l4a0n0" path="res://assets/assets-niveles/DampDungeons/Tiles/Dungeon_Autotiles.png" id="1_vli55"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dvq3anynaj73c" path="res://scenes/utility/camera/player_camera.tscn" id="6_svy2x"]
 [ext_resource type="PackedScene" uid="uid://c6rpv14ppfpbh" path="res://scenes/player/arquero.tscn" id="7_d487y"]
 [ext_resource type="PackedScene" uid="uid://b73fdhgkatq1w" path="res://scenes/enemies/orc/orc.tscn" id="9_g2s82"]
+[ext_resource type="PackedScene" uid="uid://cykjweis0n8v6" path="res://scenes/enemies/bat/bat.tscn" id="10_3fetq"]
+[ext_resource type="PackedScene" uid="uid://cs55starsgygt" path="res://scenes/enemies/insect/insect.tscn" id="11_fxja4"]
+[ext_resource type="PackedScene" uid="uid://bkjohduh8pm4" path="res://scenes/enemies/skeleton/skeleton.tscn" id="12_y8gog"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_svy2x"]
 texture = ExtResource("1_vli55")
@@ -1562,6 +1565,15 @@ debug_color = Color(0.60493875, 0.5395335, 0.13273552, 0.41960785)
 
 [node name="Orc" parent="." instance=ExtResource("9_g2s82")]
 position = Vector2(569, 181)
+
+[node name="Bat" parent="." instance=ExtResource("10_3fetq")]
+position = Vector2(396, 182)
+
+[node name="Insect" parent="." instance=ExtResource("11_fxja4")]
+position = Vector2(360, 239)
+
+[node name="Skeleton" parent="." instance=ExtResource("12_y8gog")]
+position = Vector2(734, 236)
 
 [connection signal="animation_finished" from="StaticBody2D/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

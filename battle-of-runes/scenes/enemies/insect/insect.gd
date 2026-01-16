@@ -12,6 +12,8 @@ var attack_distance: float = 40.0   # rango para ataque cuerpo a cuerpo
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var attack_timer: Timer = $Timer
+@onready var hitbox: Area2D = $HitBox
+@onready var attackbox: Area2D = $AttackHitBox
 
 var player: Node2D = null
 
@@ -19,7 +21,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	attack_timer.wait_time = 1.0
 	attack_timer.one_shot = true
-
+	sprite.connect("frame_changed", Callable(self, "_on_sprite_frame_changed"))
 
 func _physics_process(delta):
 	match current_state:
@@ -57,3 +59,43 @@ func follow_player():
 	else:
 		velocity = Vector2.ZERO
 		move_and_slide()
+
+func take_damage(amount: int):
+	if current_state == State.DEATH:
+		return
+	health -= amount
+	print("Orc recibió daño, salud actual:", health)
+	if health > 0:
+		current_state = State.HURT
+	else:
+		die()
+
+func die():
+	current_state = State.DEATH
+	velocity = Vector2.ZERO
+
+	collision.call_deferred("set_disabled", true)
+	hitbox.call_deferred("set_monitoring", false)
+	attackbox.call_deferred("set_monitoring", false)
+
+	sprite.play("hit")
+
+	# Avisar a la room UNA SOLA VEZ
+	get_tree().call_group("room", "enemy_died")
+
+func _on_sprite_frame_changed():
+	if current_state == State.DEATH and sprite.animation == "hit":
+		var total_frames = sprite.sprite_frames.get_frame_count("hit")
+		if sprite.frame == total_frames - 1:
+			queue_free()
+
+
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	if body.is_in_group("PlayerBullet"):
+		take_damage(1)
+		body.queue_free() # opcional: destruir la bala al impactar
+
+
+func _on_attack_hit_box_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		die()
