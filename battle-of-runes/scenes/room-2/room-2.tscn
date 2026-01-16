@@ -1,11 +1,12 @@
-[gd_scene load_steps=22 format=4 uid="uid://d117aoxtnph3e"]
+[gd_scene load_steps=24 format=4 uid="uid://d117aoxtnph3e"]
 
 [ext_resource type="Texture2D" uid="uid://dw5f141l4a0n0" path="res://assets/assets-niveles/DampDungeons/Tiles/Dungeon_Autotiles.png" id="1_vli55"]
 [ext_resource type="Texture2D" uid="uid://u5g78o1s0g8l" path="res://assets/assets-niveles/DampDungeons/Tiles/Dungeon_WallsAndFloors.png" id="2_o8fgo"]
 [ext_resource type="Texture2D" uid="uid://ie2d5o1x7opv" path="res://assets/assets-niveles/DampDungeons/Tiles/DungeonDecorations.png" id="3_gma22"]
 [ext_resource type="Texture2D" uid="uid://dgeb4flgsqcy8" path="res://assets/assets-niveles/DampDungeons/Animations/Dungeon_ObjectsDungeon.png" id="4_o8fgo"]
-[ext_resource type="PackedScene" uid="uid://ckxtsg8o8b8bo" path="res://scenes/player/mago.tscn" id="5_gma22"]
 [ext_resource type="PackedScene" uid="uid://dvq3anynaj73c" path="res://scenes/utility/camera/player_camera.tscn" id="6_svy2x"]
+[ext_resource type="PackedScene" uid="uid://c6rpv14ppfpbh" path="res://scenes/player/arquero.tscn" id="7_d487y"]
+[ext_resource type="Script" uid="uid://dvnnhqd3e6mr3" path="res://scenes/room-1/area_2d.gd" id="7_ou5vq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_svy2x"]
 texture = ExtResource("1_vli55")
@@ -1489,6 +1490,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gma22"]
 size = Vector2(16, 31)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d487y"]
+size = Vector2(16, 21)
+
 [node name="Room2" type="Node2D"]
 
 [node name="Sala" type="TileMapLayer" parent="."]
@@ -1532,15 +1536,29 @@ position = Vector2(584, 144)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
 sprite_frames = SubResource("SpriteFrames_o8fgo")
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 visible = false
 position = Vector2(-16, -1)
 shape = SubResource("RectangleShape2D_gma22")
 
-[node name="Player" parent="." instance=ExtResource("5_gma22")]
-position = Vector2(575, 615)
-
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_svy2x")]
 zoom = Vector2(3, 3)
-player = NodePath("../Player")
+player = NodePath("../Arquero")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(16, 65)
+collision_layer = 8
+script = ExtResource("7_ou5vq")
+nextRoom = "res://scenes/room-3/room-3.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(552, 85.5)
+shape = SubResource("RectangleShape2D_d487y")
+
+[node name="Arquero" parent="." instance=ExtResource("7_d487y")]
+position = Vector2(576, 651)
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

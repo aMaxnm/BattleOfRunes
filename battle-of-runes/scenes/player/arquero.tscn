@@ -62,7 +62,7 @@ _data = {
 size = Vector2(10, 16)
 
 [node name="Arquero" type="CharacterBody2D"]
-collision_mask = 12
+collision_mask = 4
 script = ExtResource("1_svpbo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

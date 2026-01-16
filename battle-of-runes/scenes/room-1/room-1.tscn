@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://b16bqgdrl0pau"]
+[gd_scene load_steps=28 format=4 uid="uid://b16bqgdrl0pau"]
 
 [ext_resource type="Texture2D" uid="uid://dw5f141l4a0n0" path="res://assets/assets-niveles/DampDungeons/Tiles/Dungeon_Autotiles.png" id="1_svyhc"]
 [ext_resource type="Texture2D" uid="uid://u5g78o1s0g8l" path="res://assets/assets-niveles/DampDungeons/Tiles/Dungeon_WallsAndFloors.png" id="2_2onwg"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c6rpv14ppfpbh" path="res://scenes/player/arquero.tscn" id="7_e8tnf"]
 [ext_resource type="PackedScene" uid="uid://dvq3anynaj73c" path="res://scenes/utility/camera/player_camera.tscn" id="8_e8tnf"]
 [ext_resource type="PackedScene" uid="uid://b73fdhgkatq1w" path="res://scenes/enemies/orc/orc.tscn" id="9_r01x8"]
+[ext_resource type="Script" uid="uid://dvnnhqd3e6mr3" path="res://scenes/room-1/area_2d.gd" id="10_q48tg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tiip4"]
 texture = ExtResource("1_svyhc")
@@ -1589,6 +1590,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ki4n7"]
 size = Vector2(16, 31)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r01x8"]
+size = Vector2(16, 21)
+
 [node name="Room1" type="Node2D"]
 
 [node name="Sala" type="TileMapLayer" parent="."]
@@ -1609,12 +1613,14 @@ tile_set = SubResource("TileSet_ki4n7")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(568, 81)
+collision_layer = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
 sprite_frames = SubResource("SpriteFrames_q48tg")
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-visible = false
 position = Vector2(-16, -1)
 shape = SubResource("RectangleShape2D_ki4n7")
 
@@ -1627,3 +1633,15 @@ player = NodePath("../Arquero")
 
 [node name="Orc" parent="." instance=ExtResource("9_r01x8")]
 position = Vector2(545, 153.00002)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 3)
+collision_layer = 8
+script = ExtResource("10_q48tg")
+nextRoom = "res://scenes/room-2/room-2.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(552, 85.5)
+shape = SubResource("RectangleShape2D_r01x8")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
