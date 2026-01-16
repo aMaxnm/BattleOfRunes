@@ -34,10 +34,12 @@ func _ready() -> void:
 
 	shoot_timer.wait_time = 1.2
 	shoot_timer.one_shot = true
+	call_deferred("_find_player")
 
+func _find_player():
+	player = get_tree().get_first_node_in_group("Player")
 
 func _physics_process(delta):
-
 	match current_state:
 		State.FLY:
 			sprite.play("fly")

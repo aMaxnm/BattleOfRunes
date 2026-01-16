@@ -22,6 +22,10 @@ func _ready():
 	attack_timer.wait_time = 1.0
 	attack_timer.one_shot = true
 	sprite.frame_changed.connect(_on_sprite_frame_changed)
+	call_deferred("_find_player")
+
+func _find_player():
+	player = get_tree().get_first_node_in_group("Player")
 
 
 func _physics_process(delta):
@@ -34,7 +38,7 @@ func _physics_process(delta):
 				attack_timer.start()
 
 		State.ATTACK:
-			sprite.play("attack")   # si no tienes animación de ataque, puedes usar "walk"
+			sprite.play("walk")   # si no tienes animación de ataque, puedes usar "walk"
 			velocity = Vector2.ZERO
 			if attack_timer.is_stopped():
 				current_state = State.WALK

@@ -22,6 +22,10 @@ func _ready():
 	attack_timer.wait_time = 1.0
 	attack_timer.one_shot = true
 	sprite.connect("frame_changed", Callable(self, "_on_sprite_frame_changed"))
+	call_deferred("_find_player")
+
+func _find_player():
+	player = get_tree().get_first_node_in_group("Player")
 
 func _physics_process(delta):
 	match current_state:

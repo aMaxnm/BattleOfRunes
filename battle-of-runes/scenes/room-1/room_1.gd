@@ -1,6 +1,5 @@
 extends Node2D
 
-
 @export var nextRoom: PackedScene
 @onready var door_sprite: AnimatedSprite2D = $StaticBody2D/AnimatedSprite2D
 @onready var exit_area_collision: CollisionShape2D = $Area2D/CollisionShape2D
@@ -20,6 +19,11 @@ func _ready() -> void:
 	if has_node("/root/game_manager"):
 		key = get_node("/root/game_manager").selected_character
 
+	var enemies := get_tree().get_nodes_in_group("enemies")
+	enemies_alive = enemies.size()
+	for e in enemies:
+		print("👾 Enemigo detectado:", e.name)
+
 	var scene_to_spawn: PackedScene = mage_scene
 	match key:
 		"mageCharacter":
@@ -35,6 +39,7 @@ func _ready() -> void:
 	var player := scene_to_spawn.instantiate() as Node2D
 	add_child(player)
 	player.global_position = spawn_point.global_position
+	player.add_to_group("Player")
 
 	if cam and cam.has_method("set_player"):
 		cam.call("set_player", player)
@@ -45,6 +50,11 @@ func _ready() -> void:
 
 	# Contar enemigos al inicio
 	enemies_alive = get_tree().get_nodes_in_group("enemies").size()
+	enemies_alive = 0
+	for e in enemies:
+		if e.is_inside_tree():
+			enemies_alive += 1
+	print("Enemigos activos:", enemies_alive)
 
 
 func changeScene():
@@ -55,6 +65,7 @@ func enemy_died():
 	if enemies_alive <= 0 and not door_opened:
 		door_opened = true
 		open_door()
+		print("Puerta abre")
 
 func open_door():
 	door_sprite.play("open")

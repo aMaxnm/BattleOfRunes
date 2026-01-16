@@ -22,8 +22,11 @@ func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	attack_timer.wait_time = 1.0
 	attack_timer.one_shot = true
-
+	call_deferred("_find_player")
 	sprite.connect("frame_changed", Callable(self, "_on_sprite_frame_changed"))
+
+func _find_player():
+	player = get_tree().get_first_node_in_group("Player")
 
 func _physics_process(delta):
 	match current_state:
@@ -94,6 +97,7 @@ func die():
 
 	# Avisar a la room UNA SOLA VEZ
 	get_tree().call_group("room", "enemy_died")
+	print("🧠 Orc murió, avisando a la sala")
 
 func _on_sprite_frame_changed():
 	if current_state == State.DEATH and sprite.animation == "death":
