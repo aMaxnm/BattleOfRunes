@@ -258,7 +258,9 @@ radius = 5.0990195
 [sub_resource type="CircleShape2D" id="CircleShape2D_r0j5n"]
 radius = 7.0
 
-[node name="Bat" type="CharacterBody2D"]
+[node name="Bat" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_r0j5n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

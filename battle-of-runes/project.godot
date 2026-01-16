@@ -20,6 +20,12 @@ config/icon="res://icon.svg"
 BulletManager="*res://singletons/bullet_manager.gd"
 GameManager="*res://singletons/game_manager.gd"
 
+[global_group]
+
+enemies=""
+Player=""
+room=""
+
 [input]
 
 move_left={

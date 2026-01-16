@@ -18,11 +18,12 @@ var attack_distance: float = 200.0
 @onready var shoot_marker: Marker2D = $Marker2D
 
 var player: Node2D = null
-
+var has_reported_death := false   #evita avisar dos veces a la room
 
 
 func _ready() -> void:
-	player = get_tree().get_first_node_in_group("Player")
+	# IMPORTANTE: usa el mismo nombre de grupo siempre
+	player = get_tree().get_first_node_in_group("player")
 
 	hitbox.body_entered.connect(_on_hitbox_body_entered)
 	sprite.frame_changed.connect(_on_sprite_frame_changed)
@@ -30,9 +31,7 @@ func _ready() -> void:
 	shoot_timer.wait_time = 1.2
 	shoot_timer.one_shot = true
 
-
-
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	match current_state:
 		State.FLY:
 			sprite.play("fly")
@@ -51,8 +50,6 @@ func _physics_process(delta: float) -> void:
 			sprite.play("death")
 			velocity = Vector2.ZERO
 
-# --------------------------------------------------
-
 func follow_player() -> void:
 	if not player:
 		return
@@ -62,8 +59,6 @@ func follow_player() -> void:
 	move_and_slide()
 
 	sprite.flip_h = player.global_position.x < global_position.x
-
-
 
 func check_attack() -> void:
 	if not player or not shoot_timer.is_stopped():
@@ -75,8 +70,6 @@ func check_attack() -> void:
 		shoot()
 		shoot_timer.start()
 
-
-
 func shoot() -> void:
 	if not bullet_scene or not player:
 		return
@@ -87,14 +80,10 @@ func shoot() -> void:
 
 	get_parent().add_child(bullet)
 
-
-
 func _on_hitbox_body_entered(body: Node) -> void:
 	if body.is_in_group("PlayerBullet"):
 		take_damage(1)
 		body.queue_free()
-
-
 
 func take_damage(amount: int) -> void:
 	if current_state == State.DEATH:
@@ -106,16 +95,17 @@ func take_damage(amount: int) -> void:
 	if health <= 0:
 		die()
 
-
-
 func die() -> void:
+	if has_reported_death:
+		return
+	has_reported_death = true
 	current_state = State.DEATH
 	velocity = Vector2.ZERO
-
+	# Desactivar colisiones
 	collision.call_deferred("set_disabled", true)
-	hitbox.call_deferred("queue_free")
-
-
+	hitbox.call_deferred("set_monitoring", false)
+	# Avisar a la room
+	get_tree().call_group("room", "enemy_died")
 
 func _on_sprite_frame_changed() -> void:
 	if current_state == State.DEATH and sprite.animation == "death":

@@ -70,8 +70,7 @@ func _on_HitBox_body_entered(body: Node) -> void:
 # Orc inflige daño al Player
 func _on_AttackBox_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
-		if body.has_method("take_damage"):
-			body.take_damage(1)
+		die()
 
 func take_damage(amount: int):
 	if current_state == State.DEATH:
@@ -86,13 +85,15 @@ func take_damage(amount: int):
 func die():
 	current_state = State.DEATH
 	velocity = Vector2.ZERO
-	print("Orc ha muerto")
 
 	collision.call_deferred("set_disabled", true)
-	hitbox.call_deferred("queue_free")
-	attackbox.call_deferred("queue_free")
+	hitbox.call_deferred("set_monitoring", false)
+	attackbox.call_deferred("set_monitoring", false)
 
 	sprite.play("death")
+
+	# Avisar a la room UNA SOLA VEZ
+	get_tree().call_group("room", "enemy_died")
 
 func _on_sprite_frame_changed():
 	if current_state == State.DEATH and sprite.animation == "death":
