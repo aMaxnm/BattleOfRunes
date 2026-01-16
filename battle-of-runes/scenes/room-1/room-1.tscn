@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://b16bqgdrl0pau"]
+[gd_scene load_steps=31 format=4 uid="uid://b16bqgdrl0pau"]
 
 [ext_resource type="Texture2D" uid="uid://dw5f141l4a0n0" path="res://assets/assets-niveles/DampDungeons/Tiles/Dungeon_Autotiles.png" id="1_svyhc"]
 [ext_resource type="Texture2D" uid="uid://u5g78o1s0g8l" path="res://assets/assets-niveles/DampDungeons/Tiles/Dungeon_WallsAndFloors.png" id="2_2onwg"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://b73fdhgkatq1w" path="res://scenes/enemies/orc/orc.tscn" id="9_r01x8"]
 [ext_resource type="Script" uid="uid://dvnnhqd3e6mr3" path="res://scenes/room-1/area_2d.gd" id="10_q48tg"]
 [ext_resource type="PackedScene" uid="uid://cykjweis0n8v6" path="res://scenes/enemies/bat/bat.tscn" id="11_ki4n7"]
+[ext_resource type="PackedScene" uid="uid://cs55starsgygt" path="res://scenes/enemies/insect/insect.tscn" id="12_24p7x"]
+[ext_resource type="PackedScene" uid="uid://bkjohduh8pm4" path="res://scenes/enemies/skeleton/skeleton.tscn" id="13_s6faw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tiip4"]
 texture = ExtResource("1_svyhc")
@@ -1647,6 +1649,12 @@ shape = SubResource("RectangleShape2D_r01x8")
 position = Vector2(496, 163)
 
 [node name="Bat" parent="." instance=ExtResource("11_ki4n7")]
-position = Vector2(499, 307)
+position = Vector2(215, 221)
+
+[node name="Insect" parent="." instance=ExtResource("12_24p7x")]
+position = Vector2(380, 214)
+
+[node name="Skeleton" parent="." instance=ExtResource("13_s6faw")]
+position = Vector2(411, 170)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

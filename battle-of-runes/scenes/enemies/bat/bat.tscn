@@ -1,7 +1,8 @@
-[gd_scene load_steps=41 format=3 uid="uid://cykjweis0n8v6"]
+[gd_scene load_steps=39 format=3 uid="uid://cykjweis0n8v6"]
 
 [ext_resource type="Script" uid="uid://cjls71b8kguv1" path="res://scenes/enemies/bat/bat.gd" id="1_r0j5n"]
 [ext_resource type="Texture2D" uid="uid://dkeunqgjk00kb" path="res://assets/sprites/enemies/bat/Bat_Attack.png" id="1_ym81o"]
+[ext_resource type="PackedScene" uid="uid://p501itd0m8in" path="res://scenes/enemies/bat/bat_bullet.tscn" id="2_3tkmu"]
 [ext_resource type="Texture2D" uid="uid://dia80b31w73sg" path="res://assets/sprites/enemies/bat/Bat_Fly.png" id="2_stf8a"]
 [ext_resource type="Texture2D" uid="uid://d11xinnx4lcfc" path="res://assets/sprites/enemies/bat/Bat_Hit.png" id="3_r0j5n"]
 [ext_resource type="Texture2D" uid="uid://c8wf2shh6kpia" path="res://assets/sprites/enemies/bat/Bat_Death_FX.png" id="3_stf8a"]
@@ -83,6 +84,10 @@ region = Rect2(64, 0, 64, 64)
 atlas = ExtResource("3_stf8a")
 region = Rect2(128, 0, 64, 64)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vodlo"]
+atlas = ExtResource("2_stf8a")
+region = Rect2(192, 0, 64, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_hthri"]
 atlas = ExtResource("2_stf8a")
 region = Rect2(0, 0, 64, 64)
@@ -94,10 +99,6 @@ region = Rect2(64, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vxfq8"]
 atlas = ExtResource("2_stf8a")
 region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vodlo"]
-atlas = ExtResource("2_stf8a")
-region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qie11"]
 atlas = ExtResource("3_r0j5n")
@@ -118,18 +119,6 @@ region = Rect2(192, 0, 64, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_jegu5"]
 atlas = ExtResource("3_r0j5n")
 region = Rect2(0, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nevx5"]
-atlas = ExtResource("3_r0j5n")
-region = Rect2(64, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_td4dd"]
-atlas = ExtResource("3_r0j5n")
-region = Rect2(128, 64, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fenri"]
-atlas = ExtResource("3_r0j5n")
-region = Rect2(192, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5u30h"]
 animations = [{
@@ -207,6 +196,9 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_vodlo")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_hthri")
 }, {
 "duration": 1.0,
@@ -214,9 +206,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vxfq8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vodlo")
 }],
 "loop": true,
 "name": &"fly",
@@ -237,15 +226,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jegu5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nevx5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_td4dd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fenri")
 }],
 "loop": true,
 "name": &"hit",
@@ -259,13 +239,16 @@ radius = 5.0990195
 radius = 7.0
 
 [node name="Bat" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
+motion_mode = 1
 script = ExtResource("1_r0j5n")
+bullet_scene = ExtResource("2_3tkmu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5u30h")
 animation = &"fly"
 autoplay = "fly"
-frame_progress = 0.81953436
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
