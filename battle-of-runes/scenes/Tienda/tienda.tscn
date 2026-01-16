@@ -1,0 +1,309 @@
+[gd_scene load_steps=47 format=3 uid="uid://s4nw0jgtja0m"]
+
+[ext_resource type="Texture2D" uid="uid://bu0pbqpvr8gk5" path="res://assets/backgrounds/TiendaFondo.png" id="1_2puif"]
+[ext_resource type="Script" uid="uid://dvnvphultsvfi" path="res://scenes/tienda.gd" id="1_nmus3"]
+[ext_resource type="Texture2D" uid="uid://b8owtagw7yvfa" path="res://assets/button/pocionAzul.png" id="2_1afbe"]
+[ext_resource type="Texture2D" uid="uid://cyjiyxqh2yfqy" path="res://assets/button/PuertaCerrada.png" id="2_3a5gv"]
+[ext_resource type="Texture2D" uid="uid://22xm5piy34gh" path="res://assets/sprites/vendedor.png" id="2_lkpmm"]
+[ext_resource type="Texture2D" uid="uid://bkrnmylbtycuk" path="res://assets/button/PuertaAbierta.png" id="3_4lx8e"]
+[ext_resource type="Texture2D" uid="uid://b6iygy2rss8fb" path="res://assets/button/pocionRoja.png" id="3_hlcuo"]
+[ext_resource type="Texture2D" uid="uid://cujddbma4ugbe" path="res://assets/button/pocionMorada.png" id="3_lkpmm"]
+[ext_resource type="Texture2D" uid="uid://dv6f13evwi382" path="res://assets/sprites/pagaste.png" id="4_c4go7"]
+[ext_resource type="Texture2D" uid="uid://bhb3t8rb4y0im" path="res://assets/sprites/vendedorI.png" id="5_77gaw"]
+[ext_resource type="Texture2D" uid="uid://di58oc23dpc08" path="res://assets/sprites/pagaste2.png" id="5_nmus3"]
+[ext_resource type="Texture2D" uid="uid://clvso7u5hk1hq" path="res://assets/button/pocionVerde.png" id="7_hlcuo"]
+[ext_resource type="Texture2D" uid="uid://dxam6y571vhdq" path="res://assets/sprites/espacio.png" id="8_ahx5p"]
+[ext_resource type="Texture2D" uid="uid://bgt52y8i7yiv5" path="res://assets/button/pocionAzulHover.png" id="10_bftsm"]
+[ext_resource type="Texture2D" uid="uid://c8j7kf61dt01l" path="res://assets/sprites/velocidad.png" id="10_l4l4x"]
+[ext_resource type="Texture2D" uid="uid://bess7aha7feok" path="res://assets/button/pocionAzulPresed.png" id="10_ulnbo"]
+[ext_resource type="Texture2D" uid="uid://dqslgjtmsmiyd" path="res://assets/sprites/vida.png" id="12_nrlqo"]
+[ext_resource type="Texture2D" uid="uid://6u2yhe7ftwcw" path="res://assets/button/pocionRojaPresed.png" id="14_2kswj"]
+[ext_resource type="Texture2D" uid="uid://d17c06vn6sk11" path="res://assets/sprites/daño.png" id="15_gmw26"]
+[ext_resource type="Texture2D" uid="uid://ba546owi6ppf3" path="res://assets/button/pocionRojaHover.png" id="15_id20v"]
+[ext_resource type="Texture2D" uid="uid://cmggfytdp61bi" path="res://assets/sprites/recarga.png" id="17_bftsm"]
+[ext_resource type="Texture2D" uid="uid://bub0p5ru6lmpr" path="res://assets/button/pocionMoradaPresed.png" id="19_jxyx4"]
+[ext_resource type="Texture2D" uid="uid://bqemyl32di6yn" path="res://assets/button/pocionMoradaHover.png" id="20_dubyl"]
+[ext_resource type="Texture2D" uid="uid://dudp8t6i6xsii" path="res://assets/button/pocionVerdePresed.png" id="23_y15xd"]
+[ext_resource type="Texture2D" uid="uid://h7otr50uc50d" path="res://assets/button/pocionVerdeHover.png" id="24_vh2rl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gmw26"]
+atlas = ExtResource("4_c4go7")
+region = Rect2(20, 0, 166, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bftsm"]
+atlas = ExtResource("4_c4go7")
+region = Rect2(186, 0, 166, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulnbo"]
+atlas = ExtResource("4_c4go7")
+region = Rect2(352, 0, 166, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcj26"]
+atlas = ExtResource("4_c4go7")
+region = Rect2(518, 0, 166, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kswj"]
+atlas = ExtResource("4_c4go7")
+region = Rect2(850, 0, 166, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_id20v"]
+atlas = ExtResource("5_nmus3")
+region = Rect2(830, 0, 166, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxyx4"]
+atlas = ExtResource("5_nmus3")
+region = Rect2(664, 0, 166, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dubyl"]
+atlas = ExtResource("5_nmus3")
+region = Rect2(498, 0, 166, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y15xd"]
+atlas = ExtResource("5_nmus3")
+region = Rect2(332, 0, 166, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vh2rl"]
+atlas = ExtResource("5_nmus3")
+region = Rect2(0, 0, 166, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmus3"]
+atlas = ExtResource("2_lkpmm")
+region = Rect2(195, 512, 165, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhyba"]
+atlas = ExtResource("2_lkpmm")
+region = Rect2(360, 512, 165, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4l4x"]
+atlas = ExtResource("5_77gaw")
+region = Rect2(664, 512, 166, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrlqo"]
+atlas = ExtResource("5_77gaw")
+region = Rect2(498, 512, 166, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxpnj"]
+atlas = ExtResource("2_lkpmm")
+region = Rect2(10, 0, 169, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1afbe"]
+atlas = ExtResource("2_lkpmm")
+region = Rect2(179, 0, 169, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlcuo"]
+atlas = ExtResource("2_lkpmm")
+region = Rect2(348, 0, 169, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77gaw"]
+atlas = ExtResource("2_lkpmm")
+region = Rect2(517, 0, 169, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahx5p"]
+atlas = ExtResource("2_lkpmm")
+region = Rect2(686, 0, 169, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4go7"]
+atlas = ExtResource("2_lkpmm")
+region = Rect2(855, 0, 169, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nmus3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gmw26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bftsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulnbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcj26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kswj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_id20v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxyx4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dubyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y15xd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vh2rl")
+}],
+"loop": true,
+"name": &"Pagado",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmus3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhyba")
+}],
+"loop": true,
+"name": &"SeleccionarItemDer",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4l4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrlqo")
+}],
+"loop": true,
+"name": &"SeleccionarItemIzq",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxpnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1afbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlcuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77gaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahx5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4go7")
+}],
+"loop": true,
+"name": &"saludo",
+"speed": 3.0
+}]
+
+[node name="MarginContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nmus3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_2puif")
+expand_mode = 2
+
+[node name="Salida" type="TextureButton" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("2_3a5gv")
+texture_hover = ExtResource("3_4lx8e")
+
+[node name="Vendedor" type="Node2D" parent="."]
+position = Vector2(498, 368)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Vendedor"]
+position = Vector2(84, 129)
+sprite_frames = SubResource("SpriteFrames_nmus3")
+animation = &"Pagado"
+autoplay = "saludo"
+frame_progress = 0.7076095
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="mejoraVelocidad" type="TextureButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_1afbe")
+texture_pressed = ExtResource("10_ulnbo")
+texture_hover = ExtResource("10_bftsm")
+texture_disabled = ExtResource("10_ulnbo")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_l4l4x")
+
+[node name="mejoraVida" type="TextureButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_hlcuo")
+texture_pressed = ExtResource("14_2kswj")
+texture_hover = ExtResource("15_id20v")
+texture_disabled = ExtResource("14_2kswj")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("12_nrlqo")
+
+[node name="Margen" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_ahx5p")
+
+[node name="Margen2" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_ahx5p")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="mejoraDamaged" type="TextureButton" parent="HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_lkpmm")
+texture_pressed = ExtResource("19_jxyx4")
+texture_hover = ExtResource("20_dubyl")
+texture_disabled = ExtResource("19_jxyx4")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("15_gmw26")
+
+[node name="mejoraRecarga" type="TextureButton" parent="HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("7_hlcuo")
+texture_pressed = ExtResource("23_y15xd")
+texture_hover = ExtResource("24_vh2rl")
+texture_disabled = ExtResource("23_y15xd")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("17_bftsm")
+
+[connection signal="focus_entered" from="HBoxContainer/VBoxContainer/mejoraVelocidad" to="." method="_on_mejora_velocidad_focus_entered"]
+[connection signal="focus_exited" from="HBoxContainer/VBoxContainer/mejoraVelocidad" to="." method="_on_mejora_velocidad_focus_exited"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/mejoraVelocidad" to="." method="_on_mejora_velocidad_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/VBoxContainer/mejoraVelocidad" to="." method="_on_mejora_velocidad_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/mejoraVelocidad" to="." method="_on_mejora_velocidad_pressed"]
+[connection signal="focus_entered" from="HBoxContainer/VBoxContainer/mejoraVida" to="." method="_on_mejora_vida_focus_entered"]
+[connection signal="focus_exited" from="HBoxContainer/VBoxContainer/mejoraVida" to="." method="_on_mejora_vida_focus_exited"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer/mejoraVida" to="." method="_on_mejora_vida_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/VBoxContainer/mejoraVida" to="." method="_on_mejora_vida_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/mejoraVida" to="." method="_on_mejora_vida_pressed"]
+[connection signal="focus_entered" from="HBoxContainer/VBoxContainer3/mejoraDamaged" to="." method="_on_mejora_damaged_focus_entered"]
+[connection signal="focus_exited" from="HBoxContainer/VBoxContainer3/mejoraDamaged" to="." method="_on_mejora_damaged_focus_exited"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer3/mejoraDamaged" to="." method="_on_mejora_damaged_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/VBoxContainer3/mejoraDamaged" to="." method="_on_mejora_damaged_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer3/mejoraDamaged" to="." method="_on_mejora_damaged_pressed"]
+[connection signal="focus_entered" from="HBoxContainer/VBoxContainer3/mejoraRecarga" to="." method="_on_mejora_recarga_focus_entered"]
+[connection signal="focus_exited" from="HBoxContainer/VBoxContainer3/mejoraRecarga" to="." method="_on_mejora_recarga_focus_exited"]
+[connection signal="mouse_entered" from="HBoxContainer/VBoxContainer3/mejoraRecarga" to="." method="_on_mejora_recarga_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/VBoxContainer3/mejoraRecarga" to="." method="_on_mejora_recarga_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer3/mejoraRecarga" to="." method="_on_mejora_recarga_pressed"]
